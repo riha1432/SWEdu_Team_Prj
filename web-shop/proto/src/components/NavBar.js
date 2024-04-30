@@ -12,7 +12,7 @@ const NavBar2 = () => {
               <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav me-auto">
                   <li className="nav-item">
-                    <a className="nav-link " href="/">로그인
+                    <a className="nav-link " href="/login">로그인
                       <span className="visually-hidden">(current)</span>
                     </a>
                   </li>
