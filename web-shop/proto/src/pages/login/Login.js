@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from '../components/NavBar';
+
 //components
 // import NavBar from '../components/olds/NavBar';
 
@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <div>
-      <NavBar />
+      
       <h2>로그인</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
