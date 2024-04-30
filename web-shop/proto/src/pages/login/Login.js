@@ -38,7 +38,7 @@ function Login() {
           <label htmlFor="password" className="form-label">비밀번호:</label>
           <input type="password" className="form-control" id="password" value={password} onChange={handlePasswordChange} required />
         </div>
-        <button type="submit" className="btn btn-danger">로그인</button>
+        <button type="submit" className="btn btn-dark">로그인</button>
       </form>
       <p className="mt-3">계정이 없으신가요? <Link to="/Signupp">회원가입</Link>하세요.</p>
     </div>
