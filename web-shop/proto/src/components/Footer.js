@@ -6,19 +6,22 @@ const Footer = () => {
       className='App-footer'
       style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr', // 세 개의 열로 나누기
-        gap: '10px', // 열 간의 간격
-        padding: '10px',
+        fontSize: '14px',
+        padding: '20px',
+        textAlign: 'left'
       }}
     >
+      <img src="./unbatangbold.png" alt="" />
       <div>
-        <p style={{ fontSize: '14px' }}>전화번호: 053 &#41; XXXX - XXXX</p>
-      </div>
-      <div>
-        <p style={{ fontSize: '14px' }}>장소: 경일대 6호관 403호</p>
-      </div>
-      <div>
-        <p style={{ fontSize: '14px' }}>DESIGNED By Me</p>
+        상호명 : 주식회사 ©AI농가집성마켓 | &nbsp; 대표자: XXX
+        <br />
+        전화번호: 053 &#41; XXXX - XXXX
+        <br />
+        장소: 경일대 6호관 403호
+        <br />
+        DESIGNED By AI농가집성마켓
+        <br />
+        E-mail: XXXX1234@XXXXX.com
       </div>
       <div style={{ gridColumn: '1 / -1', textAlign: 'center' }}> {/* 전체 열에 적용 */}
         <hr style={{ width: '100%' }} /> {/* 전체 너비 */}
