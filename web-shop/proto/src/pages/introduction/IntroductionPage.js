@@ -14,7 +14,7 @@ function IntroductionPage() {
   return (
     <div>
       <NavBar />
-      
+        
       <Footer />
     </div>
   );

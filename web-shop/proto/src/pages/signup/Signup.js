@@ -9,6 +9,8 @@ function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -21,10 +23,17 @@ function Signup() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('회원가입 정보:', { username, email, password });
+    console.log('회원가입 정보:', { username, email, password, address });
     // 여기에 회원가입 처리 로직을 추가할 수 있습니다.
   };
 
@@ -46,6 +55,14 @@ function Signup() {
           <div className="mb-3">
             <label htmlFor="password" className="form-label">비밀번호:</label>
             <input type="password" className="form-control" id="password" value={password} onChange={handlePasswordChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">주소:</label>
+            <input type="text" className="form-control" id="address" value={address} onChange={handleAddressChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">전화번호:</label>
+            <input type="text" className="form-control" id="phoneNumber" value={phoneNumber} onChange={handlePhoneNumberChange} required />
           </div>
           <button type="submit" className="btn btn-dark">가입하기</button>
         </form>
