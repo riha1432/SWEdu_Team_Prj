@@ -3,6 +3,7 @@ import CarouselImage from './CarouselImage';
 
 function Carousels() {
   return (
+    <div className="carousel-wrapper">
     <Carousel>
       <Carousel.Item>
         <CarouselImage src="./image1.jpg" alt="First slide" width="100%" height="300px" />
@@ -26,6 +27,7 @@ function Carousels() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </div>
   );
 }
 

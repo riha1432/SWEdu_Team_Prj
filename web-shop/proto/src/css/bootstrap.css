@@ -6050,6 +6050,11 @@ textarea.form-control-lg {
   position: relative;
 }
 
+.carousel-wrapper {
+  margin-top: 85px; /* NavBar의 높이만큼 마진을 추가 */
+}
+
+
 .carousel.pointer-event {
   touch-action: pan-y;
 }
