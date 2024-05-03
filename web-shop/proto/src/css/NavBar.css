@@ -4,6 +4,12 @@
   display: flex;
   justify-content: space-between;  /* 오른쪽 정렬 */
   align-items: center;
+  min-height: 60px;
+}
+
+.nav-link {
+  white-space: nowrap; /* 줄바꿈 방지 */
+  padding: 0 10px; /* 패딩 조절 */
 }
 
 .navbar-logo {
