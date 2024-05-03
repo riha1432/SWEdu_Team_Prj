@@ -11,6 +11,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [userType, setUserType] = useState('일반 사용자'); // 기본값은 '일반 사용자'
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -31,9 +32,13 @@ function Signup() {
     setPhoneNumber(e.target.value);
   };
 
+  const handleUserTypeChange = (e) => {
+    setUserType(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('회원가입 정보:', { username, email, password, address });
+    console.log('회원가입 정보:', { username, email, password, address, userType });
     // 여기에 회원가입 처리 로직을 추가할 수 있습니다.
   };
 
@@ -57,12 +62,19 @@ function Signup() {
             <input type="password" className="form-control" id="password" value={password} onChange={handlePasswordChange} required />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">주소:</label>
+            <label htmlFor="address" className="form-label">주소:</label>
             <input type="text" className="form-control" id="address" value={address} onChange={handleAddressChange} required />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">전화번호:</label>
+            <label htmlFor="phoneNumber" className="form-label">전화번호:</label>
             <input type="text" className="form-control" id="phoneNumber" value={phoneNumber} onChange={handlePhoneNumberChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="userType" className="form-label">사용자 유형:</label>
+            <select className="form-select" id="userType" value={userType} onChange={handleUserTypeChange}>
+              <option value="일반 사용자">일반 사용자</option>
+              <option value="관리자">관리자</option>
+            </select>
           </div>
           <button type="submit" className="btn btn-dark">가입하기</button>
         </form>
