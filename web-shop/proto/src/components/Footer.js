@@ -2,15 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer
-      className='App-footer'
-      style={{
-        display: 'grid',
-        fontSize: '14px',
-        padding: '20px',
-        textAlign: 'left'
-      }}
-    >
+    <footer className='App-footer'>
       <img src="./unbatangbold.png" alt="" />
       <div>
         상호명 : 주식회사 ©AI농가집성마켓 | &nbsp; 대표자: XXX
