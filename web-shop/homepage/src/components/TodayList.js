@@ -1,44 +1,50 @@
 import React from 'react';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import kaleImage from '../images/kaleImage.jpg'
+import kaleImage from '../images/kaleImage.jpg';
+import lettuceImage from '../images/lettuceImage.jpg';
+import chardImage from '../images/chardImage.jpg';
+import mustardGreensImage from '../images/mustardGreensImage.jpg';
 
 // 채소 데이터 배열
 const vegetables = [
-  { name: 'Carrots', src: 'https://via.placeholder.com/150', path: '/vegetable/carrots' },
-  { name: 'Broccoli', src: 'https://via.placeholder.com/150', path: '/vegetable/broccoli' },
-  { name: 'Kale', src: kaleImage, path: '/vegetable/kale' },
-  // 새로운 채소 추가
+  { name: '케일', src: kaleImage, path: '/vegetable/kale' },
+  { name: '상추', src: lettuceImage, path: '/vegetable/Lettuce' },
+  { name: '근대', src: chardImage, path: '/vegetable/Chard' },
+  { name: '겨자채', src: mustardGreensImage, path: '/vegetable/MustardGreens' },
+  
 ];
 
 // 컴포넌트 스타일
-const galleryStyle = {
-  display: 'flex',
-  gap: '10px',
-  justifyContent: 'flex-start',
-};
-
 const imgStyle = {
   width: '150px',
   height: '150px',
   objectFit: 'cover',
   borderRadius: '50%',
+  display: 'block',
+  margin: 'auto',
 };
 
 function VegetableGallery() {
   return (
-    <div style={galleryStyle}>
-      {vegetables.map((veg, index) => (
-        <Link key={index} to={veg.path}>
-          <img
-            src={veg.src}
-            alt={veg.name}
-            style={imgStyle}
-          />
-          <p style={{ textAlign: 'center' }}>{veg.name}</p>
-        </Link>
-      ))}
-    </div>
+    <Container>
+      <h1>이달의 상품 목록</h1>
+      <Row>
+        {vegetables.map((veg, index) => (
+          <Col key={index} xs={6} md={5} lg={3} className="text-center">
+            <Card>
+              <Card.Img variant="top" src={veg.src} style={imgStyle} alt={veg.name} />
+              <Card.Body>
+                <Card.Title>
+                  <Link to={veg.path}>{veg.name}</Link>
+                </Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 
