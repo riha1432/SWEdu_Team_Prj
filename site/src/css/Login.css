@@ -1,0 +1,34 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding-top: 110px;
+  }
+  
+  .login-box {
+    width: 700px; /* 폭을 좀 더 넓게 조정 */
+    padding: 70px; /* 내부 여백을 더 넓게 조정 */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .mb-3 {
+    margin-bottom: 30px; /* 입력란과 버튼 사이의 간격을 더 넓게 조정 */
+  }
+  
+  .mt-3 {
+    margin-top: 30px; /* 하단 링크와 상단의 간격을 더 넓게 조정 */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px; /* 입력란의 내부 여백을 더 넓게 조정 */
+    font-size: 18px; /* 폰트 크기를 좀 더 크게 조정 */
+  }
+  
+  .btn {
+    padding: 12px 24px; /* 버튼 내부 여백을 더 넓게 조정 */
+    font-size: 18px; /* 버튼 폰트 크기를 좀 더 크게 조정 */
+  }
+  
