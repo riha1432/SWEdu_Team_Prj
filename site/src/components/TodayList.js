@@ -18,26 +18,29 @@ const vegetables = [
 
 // 컴포넌트 스타일
 const imgStyle = {
-  width: '150px',
-  height: '150px',
-  objectFit: 'cover',
+  width: '100%', // 카드의 너비에 맞추기
+  height: '150px', // 높이를 고정하여 일관된 크기 확보
+  objectFit: 'cover', // 이미지가 공간을 채우도록 조절
   borderRadius: '50%',
   display: 'block',
   margin: 'auto',
 };
 
+
 function VegetableGallery() {
   return (
-    <Container>
+    <Container >
       <h1>이달의 상품 목록</h1>
       <Row>
         {vegetables.map((veg, index) => (
-          <Col key={index} xs={6} md={5} lg={3} className="text-center">
-            <Card>
+          <Col key={index} xs={6} md={6} lg={3} className="text-center">
+            <Card >
               <Card.Img variant="top" src={veg.src} style={imgStyle} alt={veg.name} />
-              <Card.Body>
-                <Card.Title>
-                  <Link to={veg.path}>{veg.name}</Link>
+              <Card.Body >
+                <Card.Title >
+                  <Link to={veg.path} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {veg.name}
+                  </Link>
                 </Card.Title>
               </Card.Body>
             </Card>
