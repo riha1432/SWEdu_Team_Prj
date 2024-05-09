@@ -1,9 +1,9 @@
 /*eslint-disable*/
 import React from 'react';
 
-const NavBar2 = () => {
+const NavBar = () => {
   return (
-    <navBar2 className='App'>
+    <navBar className='App'>
       <nav className="navbar fixed-top navbar-expand-lg bg-dark" data-bs-theme="dark">
           <div className="container-fluid">
               <a className="navbar-brand" href="/">Ai농가집성마켓</a>
@@ -24,7 +24,7 @@ const NavBar2 = () => {
                     <a className="nav-link" href="/signup">회원가입</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/signup">상품페이지</a>
+                    <a className="nav-link" href="/Produt">상품페이지</a>
                   </li>
                   
                   
@@ -36,9 +36,9 @@ const NavBar2 = () => {
               </div>
         </div>
       </nav>
-    </navBar2>
+    </navBar>
   );
 };
 
-export default NavBar2;
+export default NavBar;
 

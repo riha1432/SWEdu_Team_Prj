@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
@@ -7,24 +8,8 @@ import Carousel from '../components/Carousels';
 import TodayList from '../components/TodayList';
 import Footer from '../components/Footer';
 
-function BulletinBoard() {
-  return (
-    <div>
-      <h1>게시판 제목</h1>
-      <Card>
-      <Card.Header>문의 게시판</Card.Header>
-      <ListGroup variant="flush">
-        <ListGroup.Item>게시글 1</ListGroup.Item>
-        <ListGroup.Item>게시글 2</ListGroup.Item>
-        <ListGroup.Item>게시글 3</ListGroup.Item>
-      </ListGroup>
-      </Card>
-    </div>
-    
-  );
-}
 
-function Home() {
+function Home(props) {
   return (
     <div className="App">
       <NavBar />
@@ -40,9 +25,49 @@ function Home() {
           </Col>
         </Row>
       </Container>
+      <Container fluid>
+        <Row>
+          <Col xs={12} md={6}>
+          <div>
+            <h1>dddd</h1>
+          </div>
+          </Col>
+        </Row>
+      </Container>
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <Footer />
+      
     </div>
+    
   );
 }
+
+function BulletinBoard() {
+  return (
+    <div>
+            <h1>게시판 제목</h1>
+      <Card >
+      <Card.Header>문의 게시판</Card.Header>
+      <ListGroup variant="flush">
+        <ListGroup.Item>게시글 1</ListGroup.Item>
+        <ListGroup.Item>게시글 2</ListGroup.Item>
+        <ListGroup.Item>게시글 3</ListGroup.Item>
+      </ListGroup>
+      </Card>      
+    </div>
+    
+  );
+}
+
+
+
 
 export default Home;
