@@ -24,7 +24,7 @@ const NavBar = () => {
                     <a className="nav-link" href="/signup">회원가입</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/Product">상품페이지</a>
+                    <a className="nav-link" href="/Product">상품목록</a>
                   </li>
                   
                   

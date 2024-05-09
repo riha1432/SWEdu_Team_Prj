@@ -21,3 +21,8 @@
   position: static;
   bottom: auto; /* 위치를 자동으로 */
 }
+
+.DeliverImage{
+  width: 30%;
+  height: auto;
+}

@@ -1,22 +1,18 @@
 /*eslint-disable*/
 import NavBar from '../../components/NavBar';
 import React from 'react';
-import Footer from '../../components/Footer';
-
+import Carousel from '../../components/Carousels';
 
 function product() {
     return(
-        
         <div>
             <NavBar/>
-        
-        
+            <Carousel />
 
 
         </div>
-        
 
-    )
+    );
 
 }
 
