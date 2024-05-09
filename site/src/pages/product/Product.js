@@ -4,7 +4,21 @@ import React from 'react';
 import Footer from '../../components/Footer';
 
 
+function product() {
+    return(
+        
+        <div>
+            <NavBar/>
+        
+        
 
 
-<NavBar/>
+        </div>
+        
 
+    )
+
+}
+
+
+export default product;
