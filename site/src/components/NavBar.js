@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 
 const NavBar2 = () => {
@@ -12,6 +13,9 @@ const NavBar2 = () => {
               <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav me-auto">
                   <li className="nav-item">
+                    <a className="nav-link" href="/introduction">회사 소개</a>
+                  </li>
+                  <li className="nav-item">
                     <a className="nav-link " href="/login">로그인
                       <span className="visually-hidden">(current)</span>
                     </a>
@@ -20,24 +24,13 @@ const NavBar2 = () => {
                     <a className="nav-link" href="/signup">회원가입</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/introduction">회사 소개</a>
+                    <a className="nav-link" href="/signup">상품페이지</a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">관리자 로그인</a>
-                  </li>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
-                    <div className="dropdown-menu">
-                      <a className="dropdown-item" href="/">회원 정보</a>
-                      <a className="dropdown-item" href="/">배송 조회</a>
-                      <a className="dropdown-item" href="/">수량 변경</a>
-                      <div className="dropdown-divider"></div>
-                      <a className="dropdown-item" href="/">로그아웃</a>
-                    </div>
-                  </li>
+                  
+                  
                 </ul>
                 <form className="d-flex">
-                  <input className="form-control me-sm-2" type="search" placeholder="Search" />
+                  <input class="form-control mr-sm-2" style={{width: "250px"}} type="search" placeholder="Search" aria-label="Search"/>
                   <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
               </div>

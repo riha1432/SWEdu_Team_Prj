@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/Login.css'; // 스타일 파일 불러오기
@@ -43,9 +44,28 @@ function Login() {
           <p className="mt-3">계정이 없으신가요? <Link to="/Signup">회원가입</Link>하세요.</p>
         </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+            
+      
       <Footer />
     </div>
   );
 }
+
+{/* <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
+                    <div className="dropdown-menu">
+                      <a className="dropdown-item" href="/">회원 정보</a>
+                      <a className="dropdown-item" href="/">배송 조회</a>
+                      <a className="dropdown-item" href="/">수량 변경</a>
+                      <div className="dropdown-divider"></div>
+                      <a className="dropdown-item" href="/">로그아웃</a>
+                    </div>
+                  </li> */}
 
 export default Login;
