@@ -1,10 +1,57 @@
 const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
-const app = express();
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-app.listen(10004, function () {
-  console.log(`서버 실행 중 ... http://localhost:10004`);
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+const users = [
+  { id: 1, email: 'user@example.com', password: 'password' },
+  // 다른 사용자 정보들
+];
+
+const secretKey = 'your_secret_key'; // 실제 프로젝트에서는 보안 상의 이유로 이 값을 환경 변수로 설정해야 합니다.
+
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if (user) {
+    const token = jwt.sign({ userId: user.id }, secretKey); // JWT 생성
+    res.json({ token }); // 클라이언트에게 토큰 전달
+  } else {
+    res.status(401).json({ error: '인증 실패' });
+  }
+});
+
+app.get('/protected', verifyToken, (req, res) => {
+  // 클라이언트의 요청에 인증이 필요한 경우
+  res.json({ message: '인증이 완료되었습니다.' });
+});
+
+function verifyToken(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1]; // 헤더에서 토큰 추출
+
+  if (!token) {
+    return res.status(403).json({ error: '토큰이 필요합니다.' });
+  }
+
+  jwt.verify(token, secretKey, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: '인증 실패' });
+    }
+
+    req.userId = decoded.userId;
+    next();
+  });
+}
+
+app.listen(10004, () => {
+  console.log('서버 실행 중...');
 }); 
 
 const connection = mysql.createConnection({
@@ -16,8 +63,6 @@ const connection = mysql.createConnection({
 }); 
 
 app.use(express.json());
-var cors = require('cors');
-app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'src')));
 
@@ -59,6 +104,7 @@ function selectData(res) {
     }
   });
 }
+
 app.post('/login', function(req, res) {
   const { email, password } = req.body;
 
@@ -76,8 +122,11 @@ app.post('/login', function(req, res) {
         res.status(401).json({ error: '사용자를 찾을 수 없습니다. 이메일 또는 비밀번호를 확인하세요.' });
       } else {
         console.log('로그인 성공:', results);
-        res.status(200).json({ success: true });
+
+        // 사용자 정보를 클라이언트에 전송합니다.
+        res.status(200).json({ success: true, user: results[0] });
       }
     }
   });
 });
+
