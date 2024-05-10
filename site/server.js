@@ -51,7 +51,7 @@ function verifyToken(req, res, next) {
 }
 
 app.listen(10004, () => {
-  console.log('서버 실행 중...');
+  console.log('서버 실행 중...http://localhost:10004');
 }); 
 
 const connection = mysql.createConnection({
