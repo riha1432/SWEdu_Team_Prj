@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { Link, useSearchParams } from 'react-router-dom';
 import '../App.css';
-import kaleImage from '../images/kaleImage.jpg';
-import lettuceImage from '../images/lettuceImage.jpg';
-import chardImage from '../images/chardImage.jpg';
-import mustardGreensImage from '../images/mustardGreensImage.jpg';
+
+import kaleImage from '../images/kale.jpg';
+import lettuceImage from '../images/lettuce.jpg';
+import chardImage from '../images/chard.jpg';
+import mustardGreensImage from '../images/mustardGreens.jpg';
 
 // 채소 데이터 배열
 const vegetables = [
