@@ -12,15 +12,12 @@ function product() {
             <NavBar/>
             <Carousel />
 
-  
               <h1 className='font'>Ai농가집성마켓에는<br/>
-              다양한 엽채류들과<br/>
-              Ai성장 기반 농산물들이 있어요!
+              다양한 엽채류들🥗과<br/>
+              Ai성장 기반 농산물들🥬이 있어요!
               </h1>
-              <div className='container2'>
-                <div class="border">
-                        -------------------------------------------
-                </div>
+              <div className='jum'>
+                
               </div>
 
             <GroupExample />
@@ -31,7 +28,6 @@ function product() {
 }
 
     
-
 function GroupExample() {
   return (
     <CardGroup>

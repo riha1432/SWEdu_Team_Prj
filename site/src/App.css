@@ -35,7 +35,7 @@
 .font{
   margin-top: 70px;
   width: auto;
-  height: 250px;
+  height: 225px;
   align-items: center;
   text-align: center;
   font-size: 40px;
@@ -43,22 +43,13 @@
   font-family: "Monggeul";
 }
 
-.border{
-  border-top: 1px dashed rgba(0, 0, 0, .35);
-  border-bottom: 1px dashed hsla(0, 0%, 100%, .5);
-  width:100vh; /* 원하는 너비로 조정 */
-  padding: 10px;
+.jum {
+  border-top: 2px dashed rgba(0, 0, 0, .35);
+  border-bottom: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10px;
-}
-
-.container2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
+  height: 30px;
   width: auto;
 }
   
