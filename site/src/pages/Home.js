@@ -14,7 +14,7 @@ import deliver from '../images/deliver.jpg';
 function Home() {
   return (
     <div className="App">
-      <NavBar />
+      {/* <NavBar /> */}
       <Carousel />
       {/* Container를 사용하여 레이아웃 감싸기 */}
       <Container fluid style={{padding : '30px', marginBottom : '30px'}}>
@@ -73,30 +73,30 @@ function ProductPage(){
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">순위</th>
+              <th scope="col">목록</th>
+              <th scope="col">금액</th>
+              <th scope="col">갯수</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>케일</td>
+              <td>1200</td>
+              <td>5</td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <td>상추</td>
+              <td>2000</td>
+              <td>6</td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <td>겨자채</td>
+              <td>1000</td>
+              <td>8</td>
             </tr>
           </tbody>
         </table>

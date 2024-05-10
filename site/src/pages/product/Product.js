@@ -1,26 +1,44 @@
 /*eslint-disable*/
+import React, { useEffect, useState } from 'react';
 import NavBar from '../../components/NavBar';
-import React from 'react';
 import Carousel from '../../components/Carousels';
 import Footer from '../../components/Footer';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import '../../App.css';
 
-function product() {
+function product(props) {
+
+    let [fade2, setFade2] = useState('')
+  
+    useEffect(()=>{
+      setFade2('end')
+      return ()=>{
+        setFade2('')
+      }
+    },[])
+
+
     return(
+   
         <div>
-            <NavBar/>
+            {/* <NavBar/> */}
             <Carousel />
 
+            <div className={'start ' + fade2}>
               <h1 className='font'>Ai농가집성마켓에는<br/>
               다양한 엽채류들🥗과<br/>
               Ai성장 기반 농산물들🥬이 있어요!
               </h1>
               <div className='jum'>
-                
+
               </div>
 
+
             <GroupExample />
+             </div>
+
+
             <Footer />
         </div>
 

@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
@@ -11,10 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-
 function App() {
   return (
-      <Router>
+  <div>
+    <NavBar />
+    <Router>
         <Routes >
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -23,6 +24,8 @@ function App() {
           <Route path='/product' element={<Product />} />
         </Routes>
       </Router>
+  </div>
+      
   );
 }
 

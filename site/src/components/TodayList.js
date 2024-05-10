@@ -1,8 +1,8 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
+import { Link, useSearchParams } from 'react-router-dom';
+import '../App.css';
 import kaleImage from '../images/kaleImage.jpg';
 import lettuceImage from '../images/lettuceImage.jpg';
 import chardImage from '../images/chardImage.jpg';
@@ -28,9 +28,20 @@ const imgStyle = {
 };
 
 
-function VegetableGallery() {
+function VegetableGallery(tap) {
+
+  let [fade, setFade] = useState('')
+  useEffect(()=>{
+    setTimeout(()=> {setFade('end') }, 10)
+    
+    return ()=>{
+      setFade('')
+    }
+  },[tap] )
+
   return (
-    <Container >
+    <Container>
+      <div className={'start ' + fade}>
       <h1>이달의 상품 목록</h1>
       <Row>
         {vegetables.map((veg, index) => (
@@ -48,6 +59,7 @@ function VegetableGallery() {
           </Col>
         ))}
       </Row>
+    </div>
     </Container>
   );
 }
