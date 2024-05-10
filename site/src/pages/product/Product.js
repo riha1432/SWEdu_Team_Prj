@@ -4,6 +4,8 @@ import Carousel from '../../components/Carousels';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import '../../App.css';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 
 
@@ -30,84 +32,28 @@ function product(props) {
               <div className='jum'>
 
               </div>
-            <GroupExample />
+           
              </div>
 
+             <Row xs={1} md={2} className="g-4">
+      {Array.from({ length: 6 }).map((_, idx) => (
+        <Col key={idx}>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>ddd</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
         </div>
-
 );
-}
-
-    
-function GroupExample() {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <CardGroup style={{width: "1200px", objectFit: 'contain'}}>
-      <Card >
-        <Card.Img variant="top" src="lettuce1.jpg" style={{width: "400px", height: "250px" }} />
-        <Card.Body>
-          <Card.Title>상추</Card.Title>
-          <Card.Text>
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-            맛있는 상추
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="kale1.jpg" style={{width: "400px", height: "250px"}} />
-        <Card.Body>
-          <Card.Title>케일</Card.Title>
-          <Card.Text>
-            맛있는 케일
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="mustardGreens1.jpg" style={{width: "400px", height: "250px"}} />
-        <Card.Body>
-          <Card.Title>겨자채</Card.Title>
-          <Card.Text>
-            맛없는 겨자채
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-    </CardGroup>
-    </div>
-
-    
-
-  );
 }
 
 export default product;

@@ -66,7 +66,9 @@ function BulletinBoard() {
 function ProductPage(){
   return(
     <div>
+      <a href='Product' style={{textDecoration: "none"}}>
         <h1>상품목록</h1>
+      </a>
         <table class="table table-striped">
           <thead>
             <tr>
