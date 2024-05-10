@@ -17,7 +17,7 @@ function product() {
               다양한 엽채류들과<br/>
               Ai성장 기반 농산물들이 있어요!
               </h1>
-              <div className='container'>
+              <div className='container2'>
                 <div class="border">
                         -------------------------------------------
                 </div>
