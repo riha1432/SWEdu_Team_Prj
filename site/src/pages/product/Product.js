@@ -1,8 +1,6 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
-import NavBar from '../../components/NavBar';
 import Carousel from '../../components/Carousels';
-import Footer from '../../components/Footer';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import '../../App.css';
@@ -22,7 +20,7 @@ function product(props) {
     return(
    
         <div>
-            {/* <NavBar/> */}
+            
             <Carousel />
 
             <div className={'start ' + fade2}>
@@ -39,7 +37,7 @@ function product(props) {
              </div>
 
 
-            <Footer />
+            
         </div>
 
 );

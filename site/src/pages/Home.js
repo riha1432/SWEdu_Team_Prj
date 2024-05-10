@@ -3,10 +3,9 @@ import React from 'react';
 import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 // Components
-import NavBar from '../components/NavBar';
 import Carousel from '../components/Carousels';
 import TodayList from '../components/TodayList';
-import Footer from '../components/Footer';
+
 
 import deliver from '../images/deliver.jpg';
 
@@ -14,7 +13,6 @@ import deliver from '../images/deliver.jpg';
 function Home() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
       <Carousel />
       {/* Container를 사용하여 레이아웃 감싸기 */}
       <Container fluid style={{padding : '30px', marginBottom : '30px'}}>
@@ -42,7 +40,6 @@ function Home() {
       <br/>
       <br/>
       <br/>
-      <Footer />
       
     </div>
     
