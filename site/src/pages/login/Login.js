@@ -1,14 +1,15 @@
-// 수정된 클라이언트 측 코드 (login.js)
+// Login.js
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../../css/Login.css'; // 스타일 파일 불러오기
-
-
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import '../../css/Login.css';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
 function Login() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,7 +21,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await fetch('http://localhost:10004/login', {
         method: 'POST',
@@ -34,16 +35,18 @@ function Login() {
         throw new Error('로그인에 실패했습니다.');
       }
 
-      console.log('로그인 성공');
-      // 로그인 성공 시 처리할 작업 추가
+      const data = await response.json();
+      localStorage.setItem('token', data.token); // 토큰 저장
+
+      navigate('/');
     } catch (error) {
       console.error('로그인 실패:', error.message);
-      // 로그인 실패 시 처리할 작업 추가
     }
   };
 
   return (
     <div>
+      <NavBar />
       <div className="login-container">
         <div className="login-box">
           <h2>로그인</h2>
@@ -58,9 +61,10 @@ function Login() {
             </div>
             <button type="submit" className="btn btn-dark">로그인</button>
           </form>
-          <p className="mt-3">계정이 없으신가요? <Link to="/Signup">회원가입</Link>하세요.</p>
+          <p className="mt-3">계정이 없으신가요? <Link to="/signup">회원가입</Link>하세요.</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
