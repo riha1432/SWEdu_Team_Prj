@@ -35,29 +35,26 @@ const NavBar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/product">상품 목록</Link>
             </li>
+            {isLoggedIn && (
+            
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
+              <div className="dropdown-menu">
+                <Link className="dropdown-item" to="/">회원 정보</Link>
+                <Link className="dropdown-item" to="/tracking">배송 조회</Link>
+                <Link className="dropdown-item" to="/">수량 변경</Link>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
+              </div>
+            </li>  
+        )}
           </ul>
-          <form className="d-flex">
+          
+                <form className="d-flex">
                   <input className="form-control me-sm-6" style={{width: '300px'}} type="search" placeholder="Search" />
                   <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
-          {isLoggedIn && (
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
-                <div className="dropdown-menu">
-                  <Link className="dropdown-item" to="/">회원 정보</Link>
-                  <Link className="dropdown-item" to="/tracking">배송 조회</Link>
-                  <Link className="dropdown-item" to="/">수량 변경</Link>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
-                </div>
-                
-              </li>
-            </ul>
-            
-            
           
-          )}
           
         </div>
       </div>
