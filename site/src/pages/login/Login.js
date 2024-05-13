@@ -3,10 +3,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../css/Login.css';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
 
-function Login() {
+function Login({ handleLogin }) { // handleLogin 함수를 props로 전달받음
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -38,7 +36,9 @@ function Login() {
       const data = await response.json();
       localStorage.setItem('token', data.token); // 토큰 저장
 
-      navigate('/');
+      handleLogin(); // handleLogin 함수 호출
+
+      navigate('/'); // 메인 페이지로 이동
     } catch (error) {
       console.error('로그인 실패:', error.message);
     }
@@ -46,7 +46,6 @@ function Login() {
 
   return (
     <div>
-      <NavBar />
       <div className="login-container">
         <div className="login-box">
           <h2>로그인</h2>
@@ -64,9 +63,9 @@ function Login() {
           <p className="mt-3">계정이 없으신가요? <Link to="/signup">회원가입</Link>하세요.</p>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
 
 export default Login;
+

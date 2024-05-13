@@ -9,51 +9,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const users = [
-  { id: 1, email: 'user@example.com', password: 'password' },
-  // 다른 사용자 정보들
-];
-
-const secretKey = 'your_secret_key'; // 실제 프로젝트에서는 보안 상의 이유로 이 값을 환경 변수로 설정해야 합니다.
-
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  const user = users.find(u => u.email === email && u.password === password);
-  
-  if (user) {
-    const token = jwt.sign({ userId: user.id }, secretKey); // JWT 생성
-    res.json({ token }); // 클라이언트에게 토큰 전달
-  } else {
-    res.status(401).json({ error: '인증 실패' });
-  }
-});
-
-app.get('/protected', verifyToken, (req, res) => {
-  // 클라이언트의 요청에 인증이 필요한 경우
-  res.json({ message: '인증이 완료되었습니다.' });
-});
-
-function verifyToken(req, res, next) {
-  const token = req.headers.authorization?.split(' ')[1]; // 헤더에서 토큰 추출
-
-  if (!token) {
-    return res.status(403).json({ error: '토큰이 필요합니다.' });
-  }
-
-  jwt.verify(token, secretKey, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ error: '인증 실패' });
-    }
-
-    req.userId = decoded.userId;
-    next();
-  });
-}
-
-app.listen(10004, () => {
-  console.log('서버 실행 중...http://localhost:10004');
-}); 
-
 const connection = mysql.createConnection({
   host: 'localhost',
   port: 8808,
@@ -87,24 +42,6 @@ app.post('/signup', function(req, res) {
   });
 });
 
-app.get('/signup', function(req, res) {
-  selectData(res);
-});
-
-function selectData(res) {
-  const testQuery = "SELECT * FROM test.signup";
-  
-  connection.query(testQuery, function (err, results, fields) { // testQuery 실행
-    if (err) {
-      console.error('데이터 조회 실패:', err);
-      res.status(500).json({ error: '데이터 조회에 실패했습니다.' });
-    } else {
-      console.log('데이터 조회 성공:', results);
-      res.status(200).json(results);
-    }
-  });
-}
-
 app.post('/login', function(req, res) {
   const { email, password } = req.body;
 
@@ -130,3 +67,24 @@ app.post('/login', function(req, res) {
   });
 });
 
+app.get('/signup', function(req, res) {
+  selectData(res);
+});
+
+function selectData(res) {
+  const testQuery = "SELECT * FROM test.signup";
+  
+  connection.query(testQuery, function (err, results, fields) { // testQuery 실행
+    if (err) {
+      console.error('데이터 조회 실패:', err);
+      res.status(500).json({ error: '데이터 조회에 실패했습니다.' });
+    } else {
+      console.log('데이터 조회 성공:', results);
+      res.status(200).json(results);
+    }
+  });
+}
+
+app.listen(10004, () => {
+  console.log('서버 실행 중...http://localhost:10004');
+});

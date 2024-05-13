@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/Signup.css';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
+
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -61,7 +60,6 @@ function Signup() {
 
   return (
     <div>
-      <NavBar />
       <div className="signup-container">
         <div className="signup-box"> 
           <h2>회원가입</h2>
@@ -91,7 +89,7 @@ function Signup() {
           <p className="mt-3">이미 계정이 있으신가요? <Link to="/login">로그인</Link>하세요.</p>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 }

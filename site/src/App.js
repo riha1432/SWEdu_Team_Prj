@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
   // 로그인 상태를 저장하는 state 변수
@@ -21,16 +22,17 @@ function App() {
   };
 
   return (
-    <Router>
-      <div>
+    <div>
+      <Router>
         <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+      <Footer />
+    </div>
   );
 }
 
