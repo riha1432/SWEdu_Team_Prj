@@ -11,6 +11,7 @@ import mustardGreensImage from '../images/mustardGreens.jpg';
 
 // 채소 데이터 배열
 const vegetables = [
+  
   { name: '케일', src: kaleImage, path: '/vegetable/kale' },
   { name: '상추', src: lettuceImage, path: '/vegetable/Lettuce' },
   { name: '근대', src: chardImage, path: '/vegetable/Chard' },
@@ -26,6 +27,7 @@ const imgStyle = {
   borderRadius: '50%',
   display: 'block',
   margin: 'auto',
+  textDecoration: 'none',
 };
 
 

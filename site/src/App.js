@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Product from './pages/product/Product';
+import Traking from './pages/product/Tracking';
 import ProductDetailPage from './pages/product/ProductDetailPage';
 import IntroductionPage from './pages/introduction/IntroductionPage';
 import NavBar from './components/NavBar';
@@ -36,6 +37,7 @@ function App() {
           <Route path='/introduction' element={<IntroductionPage />} />
           <Route path='/product' element={<Product />} />
           <Route path='/product/Detail/:id' element={<ProductDetailPage />} />
+          <Route path='/traking' element={<Traking />} />
         </Routes>
       </Router>
       <Footer />
