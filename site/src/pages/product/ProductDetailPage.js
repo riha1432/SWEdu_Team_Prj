@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
 import '../../css/ProductDetail.css';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'; // useParams를 사용하여 URL 파라미터를 가져옴
@@ -32,6 +30,15 @@ const products = [
     // 다른 상품 추가 가능
 ];
 
+// 설명을 축약하여 일부만 보여주는 함수
+const getShortDescription = (description) => {
+    const maxCharacters = 100; // 최대 표시 문자 수
+    if (description.length <= maxCharacters) {
+        return description; // 설명이 짧은 경우 전체를 보여줌
+    }
+    return description.slice(0, maxCharacters) + '...<더보기>'; // 설명이 긴 경우 축약
+};
+
 // 날짜를 포맷하는 함수
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -44,6 +51,9 @@ function ProductDetailPage() {
 
     // 선택된 상품 찾기
     const selectedProduct = products.find(product => product.id === parseInt(id));
+
+    // 설명이 짧은지 여부 확인
+    const isShortDescription = selectedProduct.product_description.length <= 100;
 
     // 설명을 축약하여 일부만 보여주는 함수
     const getShortDescription = (description) => {
@@ -58,7 +68,6 @@ function ProductDetailPage() {
 
     return (
         <div>
-            <NavBar />
             <div className='product-detail-container'>
                 <div className='product-detail'>
                     <img
@@ -87,6 +96,7 @@ function ProductDetailPage() {
                             </div>
 
                             {/* 더 보기/축소하기 버튼 */}
+                            {!isShortDescription && ( // 설명이 100자 넘어가야 버튼 생성됨
                             <Button
                                 onClick={() => setShowFullDescription(!showFullDescription)}
                                 aria-controls="product-description"
@@ -94,6 +104,7 @@ function ProductDetailPage() {
                             >
                                 {showFullDescription ? '설명 축소하기' : '설명 더 보기'}
                             </Button>
+                            )}
 
                             <div className='product-created-at'>
                                 <strong>등록일:</strong> {formatDate(selectedProduct.created_at)}
@@ -102,7 +113,6 @@ function ProductDetailPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }
