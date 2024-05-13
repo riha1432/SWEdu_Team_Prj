@@ -35,6 +35,10 @@ const NavBar = () => {
               <Link className="nav-link" to="/product">상품 목록</Link>
             </li>
           </ul>
+          <form className="d-flex">
+                  <input className="form-control me-sm-6" style={{width: '300px'}} type="search" placeholder="Search" />
+                  <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
           {isLoggedIn && (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item dropdown">
@@ -46,9 +50,14 @@ const NavBar = () => {
                   <div className="dropdown-divider"></div>
                   <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
                 </div>
+                
               </li>
             </ul>
+            
+            
+          
           )}
+          
         </div>
       </div>
     </nav>
