@@ -71,12 +71,19 @@ app.post('/login', function(req, res) {
       } else {
         console.log('로그인 성공:', results);
 
-        // 사용자 정보를 클라이언트에 전송
-        res.status(200).json({ success: true, user: results[0] });
+        // 로그인 성공 시 토큰 생성
+        const token = generateToken(email); // 이메일을 기반으로 토큰 생성
+        res.status(200).json({ success: true, user: results[0], token });
       }
     }
   });
 });
+
+// 토큰 생성 함수
+function generateToken(email) {
+  // 간단한 토큰 생성 예시 (실제로는 보안 강화를 위해 더 복잡한 알고리즘 사용)
+  return Buffer.from(email).toString('base64');
+}
 
 app.listen(10004, () => {
   console.log('서버 실행 중...http://localhost:10004');

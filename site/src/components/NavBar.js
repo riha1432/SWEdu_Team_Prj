@@ -40,7 +40,7 @@ const NavBar = () => {
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
               <div className="dropdown-menu">
-                <Link className="dropdown-item" to="/">회원 정보</Link>
+                <Link className="dropdown-item" to="/member/:Signup_email">회원 정보</Link>
                 <Link className="dropdown-item" to="/tracking">배송 조회</Link>
                 <Link className="dropdown-item" to="/">수량 변경</Link>
                 <div className="dropdown-divider"></div>
