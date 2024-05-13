@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, ListGroup, Nav } from 'react-bootstrap';
 
 // Components
@@ -45,9 +45,19 @@ function Home() {
   );
 }
 
-function BulletinBoard() {
+function BulletinBoard(tap) {
+
+  let [fade3, setFade3] = useState('')
+  useEffect(()=>{
+    setTimeout(()=> {setFade3('end1') }, 10)
+    
+    return ()=>{
+      setFade3('')
+    }
+  },[tap] )
+
   return (
-    <div>
+    <div className={'start ' + fade3}>
             <h1>게시판 제목</h1>
       <Card >
       <Card.Header>문의 게시판</Card.Header>
@@ -62,11 +72,20 @@ function BulletinBoard() {
   );
 }
 
-function ProductPage(){
+function ProductPage(tap){
+
+  let [fade4, setFade4] = useState('')
+  useEffect(()=>{
+    setTimeout(()=> {setFade4('end2') }, 9)
+    
+    return ()=>{
+      setFade4('')
+    }
+  },[tap] )
 
   let navigate = useNavigate();
   return(
-    <div>
+    <div className={'start ' + fade4}>
       <Nav.Link onClick={()=>{ navigate('/product') }}>
         <h1>상품목록</h1>
       </Nav.Link>
@@ -105,17 +124,27 @@ function ProductPage(){
   );
 }
 
-function Delivery(){
+function Delivery(tap){
 
+  let [fade5, setFade5] = useState('')
+  useEffect(()=>{
+    setTimeout(()=> {setFade5('end1') }, 10)
+    
+    return ()=>{
+      setFade5('')
+    }
+  },[tap] )
   let navigate = useNavigate();
 
   return(
+    <div className={'start ' + fade5}>
     <Nav.Link onClick={()=>{ navigate('/traking') }}>
         <h1>배송중</h1>
         <img className="DeliverImage"  src= {deliver} />        
            
   
     </Nav.Link>
+    </div>
   );
 }
 

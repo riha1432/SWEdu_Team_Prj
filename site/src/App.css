@@ -60,7 +60,17 @@
 .end {
   transform: scale(1);
   opacity : 1;
+  transition : opacity 4s;
+}
+.end1{
+  transform: scale(1);
+  opacity : 1;
   transition : opacity 5s;
+}
+.end2{
+  transform: scale(1);
+  opacity : 1;
+  transition : opacity 6
 }
 
 .txt-wrap{
