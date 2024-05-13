@@ -31,6 +31,9 @@ const NavBar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/introduction">회사 소개</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/product">상품 목록</Link>
+            </li>
           </ul>
           {isLoggedIn && (
             <ul className="navbar-nav ml-auto">
