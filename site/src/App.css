@@ -110,7 +110,7 @@
 }
 
 .bg {
-  background-image: url('C:\Project\SWEdu_Team_Prj\site\public\trakingbg.jpg');
+  background-image: url('../public/trakingbg.jpg');
   position: absolute;
   left: 0;
   right: 0;

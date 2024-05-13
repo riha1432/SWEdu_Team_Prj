@@ -1,12 +1,11 @@
 /*eslint-disable*/
 import React from 'react';
-import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, ListGroup, Nav } from 'react-bootstrap';
 
 // Components
 import Carousel from '../components/Carousels';
 import TodayList from '../components/TodayList';
-
-
+import {Routes, Route, useNavigate, Link, Outlet} from 'react-router-dom';
 import deliver from '../images/deliver.jpg';
 
 
@@ -64,11 +63,13 @@ function BulletinBoard() {
 }
 
 function ProductPage(){
+
+  let navigate = useNavigate();
   return(
     <div>
-      <a href='Product' style={{textDecoration: "none"}}>
+      <Nav.Link onClick={()=>{ navigate('/product') }}>
         <h1>상품목록</h1>
-      </a>
+      </Nav.Link>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -81,19 +82,19 @@ function ProductPage(){
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>케일</td>
+              <td onClick={()=>{ navigate('/product/detail/1') }} >케일</td>
               <td>1200</td>
               <td>5</td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>상추</td>
+              <td onClick={()=>{ navigate('/product/detail/2') }}>상추</td>
               <td>2000</td>
               <td>6</td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>겨자채</td>
+              <td onClick={()=>{ navigate('/product/detail/3') }}>겨자채</td>
               <td>1000</td>
               <td>8</td>
             </tr>
@@ -105,16 +106,16 @@ function ProductPage(){
 }
 
 function Delivery(){
+
+  let navigate = useNavigate();
+
   return(
-    <div>
+    <Nav.Link onClick={()=>{ navigate('/traking') }}>
         <h1>배송중</h1>
-        <img className="DeliverImage"  src= {deliver}
-         onClick={()=>
-            <a href="/" />
-         
-         }  />
-               
-    </div>
+        <img className="DeliverImage"  src= {deliver} />        
+           
+  
+    </Nav.Link>
   );
 }
 
