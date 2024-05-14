@@ -28,17 +28,19 @@ function traking(){
                 </div>
             </div>
         </div>
-
         <h1 className='font1'>전화번호로 조회하기</h1>
-            <Stack direction="horizontal" gap={3}>
-                <Form.Control className="me-auto" placeholder="번호를 입력하세요..." />
-                <Button variant="secondary">🔍</Button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+        <Stack direction="horizontal" gap={3}>
+            <Form.Control  style={{ width: "400px", margin: "0 auto" }} placeholder="번호를 입력하세요..." />
+            <div className="vr" />
+            <Button variant="secondary">🔍</Button>
                 
-            </Stack>
+        </Stack>
         
             <br/>
             <br/>
             <br/>
+        </div>
             <div class="section-title-line1">👇네이버에서도 만날 수 있는 스마트택배👇</div>
         <a href='https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%ED%83%9D%EB%B0%B0%EC%A1%B0%ED%9A%8C'
             style={{ display: "flex", justifyContent: "center" }}
