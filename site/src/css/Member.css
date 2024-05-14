@@ -1,0 +1,75 @@
+.member-title {
+    text-align: center;
+    margin-top: 150px;
+    width: auto;
+    align-items: center;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(26, 45, 211);
+    font-family: "Monggeul";
+  }
+  
+  .member-container {
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: auto;
+    align-items: center;
+    text-align: left;
+    font-size: 30px;
+    color: rgb(2, 6, 14);
+    font-family: "Monggeul";
+    /* 수정 */
+  }
+  
+  .member-info {
+    margin-bottom: 10px;
+  }
+  
+  .member-info p {
+    margin-bottom: 5px;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .save-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    background-color: #218838;
+  }
+  
