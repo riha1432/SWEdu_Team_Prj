@@ -85,6 +85,54 @@ function generateToken(email) {
   return Buffer.from(email).toString('base64');
 }
 
+app.get('/userinfo', function(req, res) {
+  const token = req.headers.authorization.split(' ')[1]; // Authorization 헤더에서 토큰 추출
+  const email = Buffer.from(token, 'base64').toString(); // 토큰을 디코딩하여 이메일 추출
+
+  // 이메일을 사용하여 데이터베이스에서 회원 정보를 조회하는 쿼리 작성
+  const userInfoQuery = `SELECT * FROM signup WHERE Signup_email = ?`;
+
+  connection.query(userInfoQuery, [email], (err, results, fields) => {
+    if (err) {
+      console.error('회원 정보 조회 실패:', err);
+      res.status(500).json({ error: '회원 정보 조회에 실패했습니다.' });
+    } else {
+      if (results.length === 0) {
+        console.log('사용자를 찾을 수 없습니다.');
+        res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+      } else {
+        console.log('회원 정보 조회 성공:', results);
+        res.status(200).json(results[0]);
+      }
+    }
+  });
+});
+
+app.put('/updateuserinfo', function(req, res) {
+  const { Signup_email, Signup_pw, Signup_name, Signup_addr, Signup_ph } = req.body;
+  
+  // 클라이언트에서 전달된 토큰 추출
+  const token = req.headers.authorization.split(' ')[1]; 
+  // 토큰 디코딩하여 이메일 추출
+  const email = Buffer.from(token, 'base64').toString();
+
+  // 이메일을 사용하여 회원 정보 업데이트
+  const updateQuery = `UPDATE signup SET Signup_pw = ?, Signup_name = ?, Signup_addr = ?, Signup_ph = ? WHERE Signup_email = ?`;
+  connection.query(updateQuery, [Signup_pw, Signup_name, Signup_addr, Signup_ph, email], (err, results) => {
+    if (err) {
+      console.error('회원 정보 업데이트 실패:', err);
+      res.status(500).json({ error: '회원 정보 업데이트에 실패했습니다.' });
+    } else {
+      console.log('회원 정보 업데이트 성공:', results);
+      res.status(200).json({ success: true });
+    }
+  });
+});
+
+
+
+
+
 app.listen(10004, () => {
   console.log('서버 실행 중...http://localhost:10004');
 });

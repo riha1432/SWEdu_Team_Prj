@@ -11,6 +11,7 @@ import IntroductionPage from './pages/introduction/IntroductionPage';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Member from './pages/member/Member';
 
 function App() {
   // 로그인 상태를 저장하는 state 변수
@@ -38,6 +39,7 @@ function App() {
           <Route path='/product' element={<Product />} />
           <Route path='/product/Detail/:id' element={<ProductDetailPage />} />
           <Route path='/tracking' element={<Tracking />} />
+          <Route path='/member' element={<Member/>}/>
         </Routes>
       </Router>
       <Footer />
