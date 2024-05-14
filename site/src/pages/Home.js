@@ -138,7 +138,7 @@ function Delivery(tap){
 
   return(
     <div className={'start ' + fade5}>
-    <Nav.Link onClick={()=>{ navigate('/traking') }}>
+    <Nav.Link onClick={()=>{ navigate('/tracking') }}>
         <h1>배송중</h1>
         <img className="DeliverImage"  src= {deliver} />        
            
