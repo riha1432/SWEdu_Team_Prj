@@ -11,7 +11,7 @@ import IntroductionPage from './pages/introduction/IntroductionPage';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Member from './pages/member/Member';
+import Member from './pages/profile/Member';
 
 function App() {
   // 로그인 상태를 저장하는 state 변수
