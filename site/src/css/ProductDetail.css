@@ -1,7 +1,7 @@
 .product-detail-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     height: auto;
     padding-top: 110px;
   }
