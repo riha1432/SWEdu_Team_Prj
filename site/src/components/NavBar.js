@@ -57,7 +57,7 @@ const NavBar = () => {
             <input className="form-control me-sm-6" style={{width: '300px'}} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown}  />
             <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
-          
+
             {!isLoggedIn && (
               <>
                 <li className="nav-item">
