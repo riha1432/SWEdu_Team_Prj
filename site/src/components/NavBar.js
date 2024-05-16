@@ -22,10 +22,15 @@ const NavBar = () => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       if (text === "케일") {
-        navigate('/product/detail/1'); // useNavigate를 사용하여 리디렉션
+        navigate('/product/detail/1') // useNavigate를 사용하여 리디렉션
       }
-      else{
-        setSearch(text)
+      else if(text === "상추") {
+          navigate('/product/detail/2') 
+      }
+      else if(text === "근대"){
+        navigate('/product/detail/3') 
+      }else if(text === "겨자채"){
+        navigate('/product/detail/4') 
       }
     }
   };
