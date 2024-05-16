@@ -1,14 +1,34 @@
-import React from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { useRecoilState } from 'recoil';
+import { searchState } from '../recoilState.js';
 
 const NavBar = () => {
   const isLoggedIn = localStorage.getItem('token') !== null;
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // 토큰 제거
     // 로그아웃 후 추가적인 작업 수행 (예: 리디렉션 등)
   };
 
+  const [text, setText] = useState('');
+  const onChange = (event) => {
+    console.log(event.target.value);
+    setText(event.target.value);
+  };
+
+  const [search, setSearch] = useRecoilState(searchState);
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      if (text === "케일") {
+        navigate('/product/detail/1'); // useNavigate를 사용하여 리디렉션
+      }
+      else{
+        setSearch(text)
+      }
+    }
+  };
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -36,26 +56,23 @@ const NavBar = () => {
               <Link className="nav-link" to="/product">상품 목록</Link>
             </li>
             {isLoggedIn && (
-            
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
-              <div className="dropdown-menu">
-                <Link className="dropdown-item" to="/member">회원 정보</Link>
-                <Link className="dropdown-item" to="/tracking">배송 조회</Link>
-                <Link className="dropdown-item" to="/">수량 변경</Link>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
-              </div>
-            </li>  
-        )}
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
+                <div className="dropdown-menu">
+                  <Link className="dropdown-item" to="/member">회원 정보</Link>
+                  <Link className="dropdown-item" to="/tracking">배송 조회</Link>
+                  <Link className="dropdown-item" to="/">수량 변경</Link>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
+                </div>
+              </li>
+            )}
           </ul>
-          
-                <form className="d-flex">
-                  <input className="form-control me-sm-6" style={{width: '300px'}} type="search" placeholder="Search" />
-                  <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-          
-          
+
+          <form className="d-flex">
+            <input className="form-control me-sm-6" style={{width: '300px'}} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown}  />
+            <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
       </div>
     </nav>

@@ -12,6 +12,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Member from './pages/profile/Member';
+import {RecoilRoot} from 'recoil'
 
 function App() {
   // 로그인 상태를 저장하는 state 변수
@@ -29,20 +30,22 @@ function App() {
 
   return (
     <div>
-      <Router>
-        <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path='/introduction' element={<IntroductionPage />} />
-          <Route path='/product' element={<Product />} />
-          <Route path='/product/Detail/:id' element={<ProductDetailPage />} />
-          <Route path='/tracking' element={<Tracking />} />
-          <Route path='/member' element={<Member/>}/>
-        </Routes>
-      </Router>
-      <Footer />
+      <RecoilRoot>
+        <Router>
+          <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path='/introduction' element={<IntroductionPage />} />
+            <Route path='/product' element={<Product />} />
+            <Route path='/product/Detail/:id' element={<ProductDetailPage />} />
+            <Route path='/tracking' element={<Tracking />} />
+            <Route path='/member' element={<Member/>}/>
+          </Routes>
+        </Router>
+        <Footer />
+      </RecoilRoot>
     </div>
   );
 }
