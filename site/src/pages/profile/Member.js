@@ -34,6 +34,14 @@ const Member = () => {
   const handleSave = async () => {
     try {
       const token = localStorage.getItem('token');
+  
+      // 공백을 검사하여 저장을 막음
+      const isWhitespace = Object.values(editedUserData).some(value => typeof value === 'string' && value.trim() === '');
+      if (isWhitespace) {
+        console.error('빈 칸이 있습니다. 모든 필드를 채워주세요.');
+        return;
+      }
+  
       await axios.put('http://localhost:10004/updateuserinfo', editedUserData, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -83,15 +91,28 @@ const Member = () => {
           </div>
           {isEditing ? (
             <div className="edit-container">
-              <input type="text" name="Signup_name" value={editedUserData.Signup_name} onChange={handleChange} />
-              <input type="text" name="Signup_pw" value={editedUserData.Signup_pw} onChange={handleChange} />
-              <input type="text" name="Signup_addr" value={editedUserData.Signup_addr} onChange={handleChange} />
-              <input type="text" name="Signup_ph" value={editedUserData.Signup_ph} onChange={handleChange} />
+              <div className="input-container">
+                <label>이름:</label>
+                <input type="text" name="Signup_name" value={editedUserData.Signup_name} onChange={handleChange} />
+              </div>
+              <div className="input-container">
+                <label>비밀번호:</label>
+                <input type="text" name="Signup_pw" value={editedUserData.Signup_pw} onChange={handleChange} />
+              </div>
+              <div className="input-container">
+                <label>주소:</label>
+                <input type="text" name="Signup_addr" value={editedUserData.Signup_addr} onChange={handleChange} />
+              </div>
+              <div className="input-container">
+                <label>전화번호:</label>
+                <input type="text" name="Signup_ph" value={editedUserData.Signup_ph} onChange={handleChange} />
+              </div>
               <button className="save-button" onClick={handleSave}>저장</button>
             </div>
           ) : (
             <button className="edit-button" onClick={handleEdit}>수정하기</button>
           )}
+
         </div>
       ) : (
         <p>회원 정보를 불러오는 중...</p>
