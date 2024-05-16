@@ -16,20 +16,18 @@ function Home() {
       {/* Container를 사용하여 레이아웃 감싸기 */}
       <Container fluid style={{padding : '30px', marginBottom : '30px'}}>
         <Row > {/* 한 줄에 두 개의 컬럼 */}
-          <Col xs={12} md={6}> {/* 작은 화면에서는 전체 너비, 큰 화면에서는 반씩 */}
+          <Col xs={12}> {/* 작은 화면에서는 전체 너비, 큰 화면에서는 반씩 */}
             <TodayList />
           </Col>
-          <Col xs={12} md={6}>  
+          <Col xs={10} md={5}>  
+            <ProductPage />
             <BulletinBoard />
           </Col>
         </Row>
       </Container>
       <Container fluid>
         <Row>
-          <Col xs={12} md={6}>
-            <ProductPage />
-          </Col>
-          <Col xs={12} md={6}>  
+          <Col xs={12} >  
             <Delivery />
           </Col>
         </Row>

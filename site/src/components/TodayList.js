@@ -45,7 +45,7 @@ function VegetableGallery(tap) {
   return (
     <Container>
       <div className={'start ' + fade}>
-      <h1>이달의 상품 목록</h1>
+      <h1>지금 제일 잘 나가는 상품</h1>
       <Row>
         {vegetables.map((veg, index) => (
           <Col key={index} xs={6} md={6} lg={3} className="text-center">
