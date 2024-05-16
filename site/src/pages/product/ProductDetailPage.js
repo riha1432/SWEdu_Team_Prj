@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../css/ProductDetail.css';
-import { Container, Row, Col, Button, CardBody } from 'react-bootstrap';
+import { Container, Row, Col, Button, CardBody, FormControl, InputGroup, Card, Stack } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'; // useParams를 사용하여 URL 파라미터를 가져옴
 import Carousel from 'react-bootstrap/Carousel';
-import { Card } from 'react-bootstrap';
 
 
 
@@ -77,82 +76,109 @@ const products = [
     // 다른 상품 추가 가능
 ];
 
-// 날짜를 포맷하는 함수
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(); // 'YYYY-MM-DD' 형식의 날짜 문자열을 읽기 쉬운 형식으로 변환
-};
+
 
 function ProductDetailPage() {
-    const [showFullDescription, setShowFullDescription] = useState(false);
-    const [showModal, setShowModal] = useState(false); // 모달 상태 관리
+    const [carouselHeight, setCarouselHeight] = useState('auto'); //캐러셀 높이 호환
+    const carouselRef = useRef(null);
+    const [quantity, setQuantity] = useState(1); // 수량을 관리할 상태
     const { id } = useParams(); // URL에서 id 파라미터를 가져옴
+    
+
+    useEffect(() => {
+        function setEqualHeight() {
+            if (carouselRef.current) {
+                const carouselHeight = carouselRef.current.clientHeight;
+                setCarouselHeight(carouselHeight + 'px');
+            }
+        }
+        setEqualHeight();
+        window.addEventListener('resize', setEqualHeight);
+        return () => window.removeEventListener('resize', setEqualHeight);
+    }, []);
 
     // 선택된 상품 찾기
     const selectedProduct = products.find(product => product.id === parseInt(id));
 
-    
-
-    // 설명이 짧은지 여부 확인
-    const isShortDescription = selectedProduct.product_description.length <= 100;
-
-    // 설명을 축약하여 일부만 보여주는 함수
-    const getShortDescription = (description) => {
-        const maxCharacters = 100; // 최대 표시 문자 수
-        if (description.length <= maxCharacters) {
-            return description; //설명이 짧은 경우 전체를 보여줌
-        }
-        return description.slice(0, maxCharacters) + '... \n <더보기>'; // 설명이 긴 경우 축약
+    //배송 수량 조절
+    const incrementQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity + 1);
     };
 
-    if (!selectedProduct) return <div>상품을 찾을 수 없습니다.</div>;
+    const decrementQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(prevQuantity => prevQuantity - 1);
+        }
+    };
+
+    const totalPrice = selectedProduct.product_price * quantity;
 
     return (
         <Container className='product-detail-container'>
             <Row>
                 <Col md={5}>
+                <div ref={carouselRef} style={{ height: carouselHeight }}>
                     <Carousel>
                     <Carousel.Item>
-                        <CarouselImages src={kaleImage} text="First slide" />
-                        <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
+                        <CarouselImages src={selectedProduct.product_image_path} text="First slide" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <CarouselImages src={kaleImage} text="Second slide" />
-                        <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
+                        <CarouselImages src={selectedProduct.product_image_path} text="Second slide" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <CarouselImages src={kaleImage} text="Third slide" />
-                        <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                        </Carousel.Caption>
+                        <CarouselImages src={selectedProduct.product_image_path} text="Third slide" />
                     </Carousel.Item>
                     </Carousel>
+                </div>
                 </Col>
                 <Col md={7}>
                     <Card className='card-shadow-sm'>
                         <CardBody>
-                            <Card.Title> <h4>케일일님 한판해요</h4></Card.Title>
-                            <Card.Title className='pt-3 pb-3 border-top'> <h4>219,000원</h4></Card.Title>
+                            <Card.Title className='pt-3 pb-3'> <h4>{selectedProduct.product_title}</h4></Card.Title>
+                            <Card.Title className='pt-3 pb-3 border-top'> <h4>{selectedProduct.product_price}원</h4></Card.Title>
                             <p className="card-text pt-3 pb-3 border-top">
-                                <span className='badge bg-dark'>식물</span>
-                                <span className='badge bg-dark'>식물</span>
-                                <span className='badge bg-dark'>식물</span>
+                                <span className='badge bg-dark'>태그1</span>
+                                <span className='badge bg-dark'>태그2</span>
+                                <span className='badge bg-dark'>태그3</span>
                             </p>
-                            <div className='d-flex justify-content-between align-items-center'>
-                                <div className='btn-group' role='group'>
-                                    <Button className='btn btn-sm btn-outline-secondary'>장바구니 담기</Button>
-                                    <Button className='btn btn-sm btn-outline-secondary'>주문하기</Button>
-                                </div>
-                            </div>
+                            <p className="card-text pb-3">
+                                배송비 2500원 | 택배배송 | X월 이내 (주말, 공휴일 제외)
+                            </p>
+                            <p className="card-text  pt-3 pb-3 border-top">
+                                <Row>
+                                    <Col>
+                                        <label className='col-form-label'><h4>배송 수량</h4></label>
+                                    </Col>
+                                    <Col xs="auto" >
+                                        <InputGroup>
+                                            <Button className='btn btn-sm btn-outline-secondary' style={{ minWidth: '30px' }} onClick={decrementQuantity}>-</Button>
+                                            <FormControl
+                                                className='text-center border border-secondary rounded'
+                                                value={quantity}
+                                                readOnly
+                                                style={{ width: '60px', height: '40px' }}
+                                            />
+                                            <Button className='btn btn-sm btn-outline-secondary' style={{ minWidth: '30px' }} onClick={incrementQuantity}>+</Button>
+                                        </InputGroup>
+                                    </Col>
+                                </Row>
+                            </p>
+                            <Row className='pt-4 pb-3 border-top'>
+                                <Col>
+                                  <h3>총 상품 금액</h3>
+                                </Col>
+                                <Col style={{textAlign:'right'}}>
+                                  <h3>{totalPrice}원</h3>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="d-grid gap-2">
+                                    <Button className='btn btn-lg btn-warning btn-block' >장바구니 담기</Button>
+                                </Col>
+                                <Col className="d-grid gap-2">
+                                    <Button className='btn btn-lg btn-success btn-block' >주문하기</Button>
+                                </Col>
+                            </Row>
                         </CardBody>
                     </Card>
                 </Col>
