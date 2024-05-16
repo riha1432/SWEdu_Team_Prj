@@ -32,6 +32,12 @@ const NavBar = () => {
       }else if(text === "겨자채"){
         navigate('/product/detail/4') 
       }
+      else if(text === "상품목록" || text === "상품" || text === "목록"){
+        navigate('/product') 
+      }
+      else if(text === "배송" || text === "배송중"){
+        navigate('/tracking') 
+      }
     }
   };
 
