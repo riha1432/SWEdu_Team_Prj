@@ -1,75 +1,64 @@
+/* Member.css */
+
 .member-title {
-    text-align: center;
-    margin-top: 150px;
-    width: auto;
-    align-items: center;
-    text-align: center;
-    font-size: 60px;
-    color: rgb(26, 45, 211);
-    font-family: "Monggeul";
-  }
-  
-  .member-container {
-    width: 60%;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: auto;
-    align-items: center;
-    text-align: left;
-    font-size: 30px;
-    color: rgb(2, 6, 14);
-    font-family: "Monggeul";
-    /* 수정 */
-  }
-  
-  .member-info {
-    margin-bottom: 10px;
-  }
-  
-  .member-info p {
-    margin-bottom: 5px;
-  }
-  
-  .edit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .edit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .edit-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .edit-container input {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .save-button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .save-button:hover {
-    background-color: #218838;
-  }
-  
+  text-align: center;
+  margin-top: 140px;
+  font-size: 60px;
+  color: rgb(26, 45, 211);
+  font-family: "Monggeul";
+}
+
+.member-container {
+  width: 100%; /* 변경: 전체 너비로 확장 */
+  padding: 20px;
+  border: none; /* 변경: 테두리 제거 */
+  font-size: 30px;
+  color: rgb(2, 6, 14);
+  font-family: "Monggeul";
+}
+
+.member-info table {
+  width: 100%;
+  border-collapse: separate; /* separate로 변경 */
+}
+
+.member-info th,
+.member-info td {
+  padding: 5px; /* 여백을 10px에서 8px로 줄임 */
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  text-align: left;
+}
+
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.input-container label {
+  font-size: 20px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-button,
+.save-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button:hover,
+.save-button:hover {
+  background-color: #0056b3;
+}
