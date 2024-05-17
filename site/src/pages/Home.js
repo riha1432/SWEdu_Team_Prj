@@ -16,13 +16,19 @@ function Home() {
       {/* Container를 사용하여 레이아웃 감싸기 */}
       <Container fluid style={{padding : '30px', marginBottom : '30px'}}>
         <Row > {/* 한 줄에 두 개의 컬럼 */}
+          
           <Col xs={12}> {/* 작은 화면에서는 전체 너비, 큰 화면에서는 반씩 */}
             <TodayList />
           </Col>
-          <Col xs={10} md={5}>  
+
+          <Col xs={12} md={4} lg={6}>
             <ProductPage />
-            <BulletinBoard />
           </Col>
+
+          <Col xs={12} md={4} lg={6}>
+            <Chart />
+          </Col>
+
         </Row>
       </Container>
       <Container fluid>
@@ -32,45 +38,22 @@ function Home() {
           </Col>
         </Row>
       </Container>
-
-      <br/>
-      <br/>
-      <br/>
-      <br/>
       
     </div>
     
   );
 }
 
-function BulletinBoard(tap) {
+function Chart({xs,md,lg}){
+  return(
 
-  let [fade3, setFade3] = useState('')
-  useEffect(()=>{
-    setTimeout(()=> {setFade3('end1') }, 10)
-    
-    return ()=>{
-      setFade3('')
-    }
-  },[tap] )
-
-  return (
-    <div className={'start ' + fade3}>
-            <h1>게시판 제목</h1>
-      <Card >
-      <Card.Header>문의 게시판</Card.Header>
-      <ListGroup variant="flush">
-        <ListGroup.Item>게시글 1</ListGroup.Item>
-        <ListGroup.Item>게시글 2</ListGroup.Item>
-        <ListGroup.Item>게시글 3</ListGroup.Item>
-      </ListGroup>
-      </Card>      
-    </div>
-    
+      <h1>실시간 차트</h1>
+   
   );
 }
 
-function ProductPage(tap){
+
+function ProductPage({tap,xs,md,lg}){
 
   let [fade4, setFade4] = useState('')
   useEffect(()=>{
@@ -83,6 +66,7 @@ function ProductPage(tap){
 
   let navigate = useNavigate();
   return(
+      
     <div className={'start ' + fade4}>
       <Nav.Link onClick={()=>{ navigate('/product') }}>
         <h1>상품목록</h1>
@@ -119,6 +103,7 @@ function ProductPage(tap){
         </table>
         
     </div>
+    
   );
 }
 
@@ -137,7 +122,7 @@ function Delivery(tap){
   return(
     <div className={'start ' + fade5}>
     <Nav.Link onClick={()=>{ navigate('/tracking') }}>
-        <h1>배송중</h1>
+        <h1>배송조회</h1>
         <img className="DeliverImage"  src= {deliver} />        
            
   

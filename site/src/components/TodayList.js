@@ -12,10 +12,10 @@ import mustardGreensImage from '../images/mustardGreens.jpg';
 // 채소 데이터 배열
 const vegetables = [
   
-  { name: '케일', src: kaleImage, path: '/vegetable/kale' },
-  { name: '상추', src: lettuceImage, path: '/vegetable/Lettuce' },
-  { name: '근대', src: chardImage, path: '/vegetable/Chard' },
-  { name: '겨자채', src: mustardGreensImage, path: '/vegetable/MustardGreens' },
+  { name: '케일', src: kaleImage, path: '/product/detail/1' },
+  { name: '상추', src: lettuceImage, path: '/product/detail/2' },
+  { name: '근대', src: chardImage, path: '/product/detail/3' },
+  { name: '겨자채', src: mustardGreensImage, path: '/product/detail/4' },
   
 ];
 
@@ -24,10 +24,12 @@ const imgStyle = {
   width: '100%', // 카드의 너비에 맞추기
   height: '150px', // 높이를 고정하여 일관된 크기 확보
   objectFit: 'cover', // 이미지가 공간을 채우도록 조절
-  borderRadius: '50%',
+  borderRadius: '15%',
   display: 'block',
   margin: 'auto',
   textDecoration: 'none',
+  
+  
 };
 
 
@@ -45,7 +47,7 @@ function VegetableGallery(tap) {
   return (
     <Container>
       <div className={'start ' + fade}>
-      <h1>지금 제일 잘 나가는 상품</h1>
+      <h1 style={{fontFamily: 'Monggeul', fontSize: '48px', marginTop: '40px', marginBottom: '30px'}}>지금 제일 잘 나가는 상품</h1>
       <Row>
         {vegetables.map((veg, index) => (
           <Col key={index} xs={6} md={6} lg={3} className="text-center">
@@ -53,7 +55,7 @@ function VegetableGallery(tap) {
               <Card.Img variant="top" src={veg.src} style={imgStyle} alt={veg.name} />
               <Card.Body >
                 <Card.Title >
-                  <Link to={veg.path} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <Link to={veg.path} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',  textDecoration: 'none', fontFamily: 'Monggeul', fontSize: '30px', color: 'Mediumspringgreen' }}>
                     {veg.name}
                   </Link>
                 </Card.Title>

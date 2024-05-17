@@ -76,7 +76,7 @@
 .end {
   transform: scale(1);
   opacity : 1;
-  transition : opacity 4s;
+  transition : opacity 5s;
 }
 .end1{
   transform: scale(1);
