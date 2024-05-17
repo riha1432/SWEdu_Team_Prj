@@ -6,6 +6,7 @@ import { Container, Row, Col, Card, ListGroup, Nav } from 'react-bootstrap';
 import Carousel from '../components/Carousels';
 import TodayList from '../components/TodayList';
 import {Routes, Route, useNavigate, Link, Outlet} from 'react-router-dom';
+import RealTimeChart from '../components/RealTimeChart';
 import deliver from '../images/deliver.jpg';
 
 
@@ -26,7 +27,7 @@ function Home() {
           </Col>
 
           <Col xs={12} md={4} lg={6}>
-            <Chart />
+            <RealTimeChart />
           </Col>
 
         </Row>
@@ -43,15 +44,6 @@ function Home() {
     
   );
 }
-
-function Chart({xs,md,lg}){
-  return(
-
-      <h1>실시간 차트</h1>
-   
-  );
-}
-
 
 function ProductPage({tap,xs,md,lg}){
 

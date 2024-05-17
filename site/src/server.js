@@ -129,6 +129,28 @@ app.put('/updateuserinfo', function(req, res) {
   });
 });
 
+app.get('/cropsprice', (req, res) => {
+  // cropsprice 테이블의 모든 데이터를 가져오는 쿼리 작성
+  const query = `SELECT * FROM cropsprice`;
+
+  // 데이터베이스에서 데이터를 가져옴
+  connection.query(query, (err, results, fields) => {
+    if (err) {
+      console.error('데이터 조회 실패:', err);
+      res.status(500).json({ error: '데이터 조회에 실패했습니다.' });
+    } else {
+      if (results.length === 0) {
+        console.log('데이터가 없습니다.');
+        res.status(404).json({ error: '데이터가 없습니다.' });
+      } else {
+        console.log('데이터 조회 성공:', results);
+        // 가져온 데이터를 JSON 형식으로 클라이언트에 응답
+        res.status(200).json(results);
+      }
+    }
+  });
+});
+
 
 
 
