@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/Member.css'; // CSS 파일 경로 수정
 import memImage from '../../images/mem.jpg'; // si.png 이미지 경로를 가져옵니다.
+import profileImage from  '../../images/profile.png';
 
 const Member = () => {
   const [userData, setUserData] = useState(null);
@@ -83,7 +84,11 @@ const Member = () => {
         <div className="signup-box">
           {userData ? (
             <form className="member-info">
+              <div className="profile-image-container">
+              <img src={profileImage} alt="프로필 이미지" className="profile-image" />
+              </div>
               <div className="mb-3">
+              
                 <label className="form-label">이름</label>
                 {isEditing ? (
                   <input type="text" className="form-control" name="Signup_name" value={editedUserData.Signup_name} onChange={handleChange} />
