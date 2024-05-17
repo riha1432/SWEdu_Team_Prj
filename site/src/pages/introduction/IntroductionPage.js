@@ -25,7 +25,8 @@ function IntroductionPage() {
       <div className='sub-container ceo'>
         <div className="bg-gray">
         <div className="grid1080">
-        <img src='Rlogo.png' className='img' />
+        <img src='rprofile.jpg' className='img' />
+        
           <div className="txt-box">
          
                 <p>Ai농가집성마켓은 <br />지속적인 혁신과 도전으로

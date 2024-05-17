@@ -183,11 +183,11 @@
     line-height: 48px;
     color: #333;
     position: relative;
-    padding-left: 65px;
+    padding-left: 180px;
 }
 
 .sub-container.ceo .bg-gray .sign {
-    padding-left: 65px;
+    padding-left: 180px;
     margin-top: 130px;
 }
 
@@ -195,8 +195,10 @@
   overflow-clip-margin: content-box;
   overflow: clip;
   color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
+  margin-right: 500px;
+  border-radius: 10%;
 }
 
 .sub-container.ceo .bg-gray .img {
