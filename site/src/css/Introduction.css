@@ -1,0 +1,208 @@
+.DeliverImage{
+    width: 30%;
+    height: auto;
+  }
+  
+  @font-face {
+    font-family: Monggeul;
+    src: url(../../src/fonts/HakgyoansimMonggeulmonggeulR.ttf);
+  }
+  
+  @font-face {
+    font-family: Kossuyeom;
+    src: url(../../src/fonts/HakgyoansimKossuyeomR.ttf);
+  }
+  
+  .font{
+    margin-top: 70px;
+    width: auto;
+    height: 225px;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    color: rgb(91, 80, 104);
+    font-family: "Monggeul";
+  }
+  
+  .font1{
+    margin-top: 120px;
+    width: auto;
+    height: 150px;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    color: black;
+    font-family: "Kossuyeom";
+  }
+  
+  .jum {
+    border-top: 2px dashed rgba(0, 0, 0, .35);
+    border-bottom: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: auto;
+  }
+    
+  .start {
+    transform: scale(0);
+    opacity : 0;
+  }
+  .end {
+    transform: scale(1);
+    opacity : 1;
+    transition : opacity 5s;
+  }
+  .end1{
+    transform: scale(1);
+    opacity : 1;
+    transition : opacity 5s;
+  }
+  .end2{
+    transform: scale(1);
+    opacity : 1;
+    transition : opacity 6
+  }
+  
+  /* tracking css */
+  .txt-wrap{
+  
+    position: relative;
+        height: 270px;
+        max-width: 1080px;
+        margin: 0 auto;
+       
+        text-align: center;
+        z-index: 100;
+  }
+  .txt-wrap .txt-inner {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+    padding: 0 150px;
+    
+  }
+  
+  .txt-wrap .title-1 {
+    font-size: 45px;
+    line-height: 48px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 50px;
+  }
+  
+  .txt-wrap .txt-1 {
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #fff;
+  }
+  
+  .hidden {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: none;
+    clip: rect(0, 0, 0,0);
+  }
+  
+  .bg1 {
+    background-image: url('../../public/introduction.jpg');
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .hide-on-pc {
+    display: block; 
+   
+  }
+  
+  .hide-on-mobile {
+    display: none;
+     
+  }
+  
+  .box-subTop, .box-subTop-2 {
+    position: relative;
+    background: no-repeat 50% 50%;
+    background-size: cover;
+  }
+  
+  .box-subTop:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .35);
+  }
+  
+.bg-gray {
+    background-color: #f7f7f7;
+}
+
+.sub-container.ceo .bg-gray .grid1080 {
+    position: relative;
+    min-height: 452px;
+    padding: 100px 0 80px 0;
+}
+
+.sub-container.ceo .bg-gray .txt-box {
+    position: relative;
+    width: 650px;
+    margin-top: 35px;
+}
+.sub-container.ceo .bg-gray .txt-box p::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background-size: cover;
+}
+.sub-container.ceo .bg-gray .txt-box p::after, .sub-container.ceo .bg-gray .txt-box p::before {
+    content: "";
+    width: 34px;
+    height: 23px;
+}
+
+.sub-container.ceo .bg-gray .txt-box p {
+    font-size: 32px;
+    line-height: 48px;
+    color: #333;
+    position: relative;
+    padding-left: 65px;
+}
+
+.sub-container.ceo .bg-gray .sign {
+    padding-left: 65px;
+    margin-top: 130px;
+}
+
+.img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  color: transparent;
+  width: 300px;
+  height: 300px;
+}
+
+.sub-container.ceo .bg-gray .img {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  border: 0 none;
+  vertical-align: top;
+}

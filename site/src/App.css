@@ -22,11 +22,6 @@
   bottom: auto; /* 위치를 자동으로 */
 }
 
-.DeliverImage{
-  width: 30%;
-  height: auto;
-}
-
 @font-face {
   font-family: Monggeul;
   src: url(../src/fonts/HakgyoansimMonggeulmonggeulR.ttf);
@@ -88,87 +83,3 @@
   opacity : 1;
   transition : opacity 6
 }
-
-/* tracking css */
-.txt-wrap{
-
-  position: relative;
-      height: 330px;
-      max-width: 1080px;
-      margin: 0 auto;
-     
-      text-align: center;
-      z-index: 100;
-}
-.txt-wrap .txt-inner {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translate(0, -50%);
-  padding: 0 150px;
-  margin-top: 50px;
-}
-
-.txt-wrap .title-1 {
-  font-size: 40px;
-  line-height: 48px;
-  color: #fff;
-  font-weight: 600;
-  margin-top: 50px;
-}
-
-.txt-wrap .txt-1 {
-  margin-top: 14px;
-  font-size: 16px;
-  line-height: 28px;
-  color: #fff;
-}
-
-.hidden {
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  border: none;
-  clip: rect(0, 0, 0,0);
-}
-
-.bg {
-  background-image: url('../public/trakingbg.jpg');
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.hide-on-pc {
-  display: block;
-}
-
-.hide-on-mobile {
-  display: none;
-}
-
-.box-subTop, .box-subTop-2 {
-  position: relative;
-  background: no-repeat 50% 50%;
-  background-size: cover;
-}
-
-.section-title-line1 {
-  font-size: 45px;
-  margin-top: 70px;
-  margin-bottom: 70px;
-  text-align: center;
-    font-weight: 500;
-    color: #212121;
-}
-
-/* tracking css */

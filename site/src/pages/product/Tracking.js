@@ -1,8 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
-import '../../App.css';
-import Image from 'react-bootstrap/Image';
-import Footer from '../../components/Footer';
+import '../../css/Tracking.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -17,8 +15,8 @@ function traking(){
         <>
         <div className='box-subTop ani-on'>
             <div className="bg">
-                <div class="hide-on-pc" style={{ backgrounImage: 'url(${backgroundImageUrl}()' }} />
-                <div class="hide-on-mobile" style={{ backgrounImage: 'url(${backgroundImageUrl}()' }} />
+                <div class="hide-on-pc" style={{ backgroundImage: 'url(${backgroundImageUrl}()' }} />
+                <div class="hide-on-mobile" style={{ backgroundImage: 'url(${backgroundImageUrl}()' }} />
             </div>
             <div className="txt-wrap">
                 <div className="txt-inner">
