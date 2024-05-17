@@ -1,20 +1,39 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate 추가
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { searchState } from '../recoilState.js';
 
 const NavBar = () => {
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
   const isLoggedIn = localStorage.getItem('token') !== null;
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setUsername(localStorage.getItem('username'));
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrollTop(document.documentElement.scrollTop);
+      setScrolling(document.documentElement.scrollTop > scrollTop);
+    };
+    window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [scrollTop]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // 토큰 제거
-    // 로그아웃 후 추가적인 작업 수행 (예: 리디렉션 등)
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setUsername('');
   };
 
   const [text, setText] = useState('');
   const onChange = (event) => {
-    console.log(event.target.value);
     setText(event.target.value);
   };
 
@@ -22,78 +41,77 @@ const NavBar = () => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       if (text === "케일") {
-        navigate('/product/detail/1') // useNavigate를 사용하여 리디렉션
-      }
-      else if(text === "상추") {
-          navigate('/product/detail/2') 
-      }
-      else if(text === "근대"){
-        navigate('/product/detail/3') 
-      }else if(text === "겨자채"){
-        navigate('/product/detail/4') 
-      }
-      else if(text === "상품목록" || text === "상품" || text === "목록"){
-        navigate('/product') 
-      }
-      else if(text === "배송" || text === "배송중"){
-        navigate('/tracking') 
+        navigate('/product/detail/1');
+      } else if (text === "상추") {
+        navigate('/product/detail/2');
+      } else if (text === "근대") {
+        navigate('/product/detail/3');
+      } else if (text === "겨자채") {
+        navigate('/product/detail/4');
+      } else if (text === "상품목록" || text === "상품" || text === "목록") {
+        navigate('/product');
+      } else if (text === "배송" || text === "배송중") {
+        navigate('/tracking');
       }
     }
   };
 
   return (
-    <nav className="navbar fixed-top navbar-expand-lg bg-light" data-bs-theme="light">
-      <div className="container-fluid">
-
-        
-        <Link className="navbar-brand" to="/"><img src='Rlogo.png'></img></Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav me-auto">
-
-          <form className="d-flex">
-            <input className="form-control me-sm-6" style={{width: '300px'}} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown}  />
-            <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form>
-
-            {!isLoggedIn && (
+    <>
+      <div className={`top-bar ${scrolling ? 'scrolling' : ''}`}>
+        <div className="container">
+          <div className="d-flex justify-content-end">
+            {!isLoggedIn ? (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">로그인</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/signup">회원가입</Link>
-                </li>
+                <Link className="btn btn-link" to="/login">로그인</Link>
+                <Link className="btn btn-link" to="/signup">회원가입</Link>
+              </>
+            ) : (
+              <>
+                <span className="navbar-text me-2">안녕하세요, {username}님</span>
+                <button className="btn btn-link" onClick={handleLogout}>로그아웃</button>
               </>
             )}
-            <li className="nav-item">
-              <Link className="nav-link" to="/introduction">회사 소개</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/product">상품 목록</Link>
-            </li>
-            {isLoggedIn && (
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
-                <div className="dropdown-menu">
-                  <Link className="dropdown-item" to="/member">회원 정보</Link>
-                  <Link className="dropdown-item" to="/tracking">배송 조회</Link>
-                  <Link className="dropdown-item" to="/">수량 변경</Link>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
-                </div>
-              </li>
-            )}
-          </ul>
-
-          
-
-
+          </div>
         </div>
       </div>
-    </nav>
+      <nav className={`navbar ${scrolling ? 'fixed-top' : ''} navbar-expand-lg bg-light`} data-bs-theme="light">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            <img className='navbar-img' src='Rlogo.png' alt="Brand Logo" />
+          </Link>
+          <form className="d-flex">
+            <input className="form-control me-sm-6" style={{ width: '300px' }} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown} />
+            <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarColor01">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/introduction">회사 소개</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/product">상품 목록</Link>
+              </li>
+              {isLoggedIn && (
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">마이페이지</a>
+                  <div className="dropdown-menu">
+                    <Link className="dropdown-item" to="/member">회원 정보</Link>
+                    <Link className="dropdown-item" to="/tracking">배송 조회</Link>
+                    <Link className="dropdown-item" to="/">수량 변경</Link>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
+                  </div>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 };
 
