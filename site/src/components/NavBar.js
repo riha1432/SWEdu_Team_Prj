@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { searchState } from '../recoilState.js';
+import Rlogo from '../images/Rlogo.png';
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
   const isLoggedIn = localStorage.getItem('token') !== null;
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  const SCROLL_THRESHOLD = 75; // 스크롤 임계값 설정
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -17,14 +18,14 @@ const NavBar = () => {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrollTop(document.documentElement.scrollTop);
-      setScrolling(document.documentElement.scrollTop > scrollTop);
+    const handleScroll = () => {
+      const currentScrollTop = document.documentElement.scrollTop;
+      setScrolling(currentScrollTop > SCROLL_THRESHOLD);
     };
-    window.addEventListener('scroll', onScroll);
 
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [scrollTop]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -78,7 +79,7 @@ const NavBar = () => {
       <nav className={`navbar ${scrolling ? 'fixed-top' : ''} navbar-expand-lg bg-light`} data-bs-theme="light">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <img className='navbar-img' src='Rlogo.png' alt="Brand Logo" />
+            <img className='navbar-img' src={Rlogo} alt="Brand Logo" />
           </Link>
           <form className="d-flex">
             <input className="form-control me-sm-6" style={{ width: '300px' }} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown} />
@@ -116,3 +117,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
