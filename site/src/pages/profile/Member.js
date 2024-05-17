@@ -84,11 +84,19 @@ const Member = () => {
         <div className="signup-box">
           {userData ? (
             <form className="member-info">
-              <div className="profile-image-container">
-              <img src={profileImage} alt="프로필 이미지" className="profile-image" />
+
+              <div className='flip-outer'>
+                <div className='flip-inner'>
+                  <div className="profile-image-container">
+                    <img src={profileImage} alt="프로필 이미지" className="profile-image front" />
+                      <div className='back'>
+                        <h4>수정하기</h4>
+                      </div>
+                  </div>
+                </div>
               </div>
+
               <div className="mb-3">
-              
                 <label className="form-label">이름</label>
                 {isEditing ? (
                   <input type="text" className="form-control" name="Signup_name" value={editedUserData.Signup_name} onChange={handleChange} />
