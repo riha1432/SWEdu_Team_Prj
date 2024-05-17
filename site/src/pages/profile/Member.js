@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/Member.css'; // CSS 파일 경로 수정
+import memImage from '../../images/mem.jpg'; // si.png 이미지 경로를 가져옵니다.
 
 const Member = () => {
   const [userData, setUserData] = useState(null);
@@ -66,9 +67,9 @@ const Member = () => {
   return (
     <>
       <div className='box-subTop ani-on'>
-        <div className="bg">
-          <div class="hide-on-pc" style={{ backgroundImage: 'url(${backgroundImageUrl}()' }} />
-          <div class="hide-on-mobile" style={{ backgroundImage: 'url(${backgroundImageUrl}()' }} />
+        <div className="bg" style={{ backgroundImage: `url(${memImage})` }}>
+          <div className="hide-on-pc" />
+          <div className="hide-on-mobile" />
         </div>
         <div className="txt-wrap">
           <div className="txt-inner">
@@ -78,64 +79,56 @@ const Member = () => {
           </div>
         </div>
       </div>
-      <div className="member-container">
-        {userData ? (
-          <div className="member-info">
-            {isEditing ? (
-              <>
-                <div className="input-container">
-                  <label>이름:</label>
-                  <input type="text" name="Signup_name" value={editedUserData.Signup_name} onChange={handleChange} />
-                </div>
-                <div className="input-container">
-                  <label>비밀번호:</label>
-                  <input type="text" name="Signup_pw" value={editedUserData.Signup_pw} onChange={handleChange} />
-                </div>
-                <div className="input-container">
-                  <label>주소:</label>
-                  <input type="text" name="Signup_addr" value={editedUserData.Signup_addr} onChange={handleChange} />
-                </div>
-                <div className="input-container">
-                  <label>전화번호:</label>
-                  <input type="text" name="Signup_ph" value={editedUserData.Signup_ph} onChange={handleChange} />
-                </div>
-                <button onClick={handleSave}>저장하기</button> {/* 저장하기 버튼 추가 */}
-              </>
-            ) : (
-              <>
-                <div className="middle">
-                  <table>
-                    <tbody>
-                      <tr>
-                        <th>이름</th>
-                        <td>{userData.Signup_name}</td>
-                      </tr>
-                      <tr>
-                        <th>이메일</th>
-                        <td>{userData.Signup_email}</td>
-                      </tr>
-                      <tr>
-                        <th>비밀번호</th>
-                        <td>{userData.Signup_pw}</td>
-                      </tr>
-                      <tr>
-                        <th>주소</th>
-                        <td>{userData.Signup_addr}</td>
-                      </tr>
-                      <tr>
-                        <th>전화번호</th>
-                        <td>{userData.Signup_ph}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <button onClick={handleEdit}>수정하기</button> {/* 수정하기 버튼 */}
-              </>
-            )}
-          </div>
-        ) : (
-          <p>회원 정보를 불러오는 중...</p>
-        )}
+      <div className="signup-container">
+        <div className="signup-box">
+          {userData ? (
+            <form className="member-info">
+              <div className="mb-3">
+                <label className="form-label">이름</label>
+                {isEditing ? (
+                  <input type="text" className="form-control" name="Signup_name" value={editedUserData.Signup_name} onChange={handleChange} />
+                ) : (
+                  <p className="form-control-static">{userData.Signup_name}</p>
+                )}
+              </div>
+              <div className="mb-3">
+                <label className="form-label">이메일</label>
+                <p className="form-control-static">{userData.Signup_email}</p>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">비밀번호</label>
+                {isEditing ? (
+                  <input type="text" className="form-control" name="Signup_pw" value={editedUserData.Signup_pw} onChange={handleChange} />
+                ) : (
+                  <p className="form-control-static">{userData.Signup_pw}</p>
+                )}
+              </div>
+              <div className="mb-3">
+                <label className="form-label">주소</label>
+                {isEditing ? (
+                  <input type="text" className="form-control" name="Signup_addr" value={editedUserData.Signup_addr} onChange={handleChange} />
+                ) : (
+                  <p className="form-control-static">{userData.Signup_addr}</p>
+                )}
+              </div>
+              <div className="mb-3">
+                <label className="form-label">전화번호</label>
+                {isEditing ? (
+                  <input type="text" className="form-control" name="Signup_ph" value={editedUserData.Signup_ph} onChange={handleChange} />
+                ) : (
+                  <p className="form-control-static">{userData.Signup_ph}</p>
+                )}
+              </div>
+              {isEditing ? (
+                <button type="button" className="btn btn-primary" onClick={handleSave}>저장하기</button>
+              ) : (
+                <button type="button" className="btn btn-secondary" onClick={handleEdit}>수정하기</button>
+              )}
+            </form>
+          ) : (
+            <p>회원 정보를 불러오는 중...</p>
+          )}
+        </div>
       </div>
     </>
   );

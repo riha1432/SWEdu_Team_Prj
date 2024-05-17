@@ -4,6 +4,7 @@
     align-items: center;
     height: auto;
     padding-top: 110px;
+    margin-top: 60px;
   }
   
   .signup-box {
@@ -31,4 +32,3 @@
     padding: 12px 24px; /* 버튼 내부 여백을 더 넓게 조정 */
     font-size: 18px; /* 버튼 폰트 크기를 좀 더 크게 조정 */
   }
-  
