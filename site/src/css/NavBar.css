@@ -4,11 +4,13 @@
   display: flex;
   justify-content: space-between;  /* 오른쪽 정렬 */
   align-items: center;
+  
 }
+
 
 @media (max-width: 991px) {
   .navbar {
-    height: 100px;
+    height: auto;
     min-height: 87px; /* 작은 화면에서 높이 조정 */
     padding: 5px; /* 패딩 줄이기 */
   }
@@ -17,11 +19,10 @@
 .navbar-brand img {
   width: 120px; /* 원하는 너비로 설정 */
   height: 85px; /* 자동으로 높이 조정 */
-  margin-left: 300px;
 }
 
 .navbar-logo {
-  margin-right: 10px;  /* 로고와 메뉴 사이의 간격 최소화 */
+  margin-right: 50px;  /* 로고와 메뉴 사이의 간격 최소화 */
   margin-left: 10px;
 }
 
