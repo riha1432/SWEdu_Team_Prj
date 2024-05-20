@@ -76,3 +76,7 @@
 .btn-link{
   text-decoration-line: none;
 }
+
+.logout-link {
+  color: rgb(238, 95, 95) !important;
+}
