@@ -61,29 +61,29 @@ function ProductPage({tap,xs,md,lg}){
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">순위</th>
+              <th scope="col">인기순위</th>
               <th scope="col">목록</th>
-              <th scope="col">금액</th>
-              <th scope="col">갯수</th>
+              <th scope="col">실시간 금액</th>
+              <th scope="col">수확 가능 갯수</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td onClick={()=>{ navigate('/product/detail/1') }} >케일</td>
-              <td>1200</td>
+              <td onClick={()=>{ navigate('/product/detail/3') }} >겨자채</td>
+              <td>600</td>
               <td>5</td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td onClick={()=>{ navigate('/product/detail/2') }}>상추</td>
-              <td>2000</td>
+              <td>800</td>
               <td>6</td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td onClick={()=>{ navigate('/product/detail/3') }}>겨자채</td>
-              <td>1000</td>
+              <td onClick={()=>{ navigate('/product/detail/3') }}>케일</td>
+              <td>700</td>
               <td>8</td>
             </tr>
           </tbody>
@@ -110,9 +110,9 @@ function Delivery(tap){
     <div className={'start ' + fade5}>
     <Nav.Link onClick={()=>{ navigate('/tracking') }}>
         <h1>배송조회</h1>
-        <img className="DeliverImage"  src= {deliver} />        
-           
-  
+        <img className="DeliverImage"  src= {deliver}
+        style={{width:"350px", height:"350px", marginTop:"30px"}}
+        />
     </Nav.Link>
     </div>
   );

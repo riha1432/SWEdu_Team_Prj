@@ -61,3 +61,22 @@
 .navbar-menu a:hover {
   color: #e7bf1c;  /* 호버 시 색상 변화 */
 }
+.container{
+  font-family: Sejong;
+  text-decoration-line: none;
+}
+
+.navbar-text{
+  margin-top: 10px;
+}
+
+.btn{
+  margin-top: 5px;
+}
+.btn-link{
+  text-decoration-line: none;
+}
+
+.logout-link {
+  color: rgb(238, 95, 95) !important;
+}
