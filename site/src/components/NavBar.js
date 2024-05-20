@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { searchState } from '../recoilState.js';
 import Rlogo from '../images/Rlogo.png';
 
+
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
   const isLoggedIn = localStorage.getItem('token') !== null;
@@ -80,6 +81,7 @@ const NavBar = () => {
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img className='navbar-img' src={Rlogo} alt="Brand Logo" />
+            <text className='navbar-logo'>Ai농가집성마켓</text>
           </Link>
           <form className="d-flex">
             <input className="form-control me-sm-6" style={{ width: '300px' }} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown} />

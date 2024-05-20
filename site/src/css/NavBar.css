@@ -23,13 +23,16 @@
 }
 
 .navbar-brand img {
-  width: 120px; /* 원하는 너비로 설정 */
-  height: 85px; /* 자동으로 높이 조정 */
+  width: 130px; /* 원하는 너비로 설정 */
+  height: 90px; /* 자동으로 높이 조정 */
 }
 
 .navbar-logo {
-  margin-right: 50px;  /* 로고와 메뉴 사이의 간격 최소화 */
-  margin-left: 10px;
+  margin-right: 15px;  /* 로고와 메뉴 사이의 간격 최소화 */
+  margin-left: 15px;
+  font-family: "Sejong";
+  color: #3a3a3a;
+  font-size: 28px;
 }
 
 .navbar-logo a {

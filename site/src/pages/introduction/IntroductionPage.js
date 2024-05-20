@@ -41,7 +41,15 @@ function IntroductionPage() {
           </div>
       </div>
       
+      <div className='text1'>
+      <p><strong>저희 Ai농가집성마켓은 Ai를 활용해<br/>
+      
+      </strong></p>
+      </div>
 
+      <div className='text2'>
+        <p>Ai를 활용해 앞으로의 작물상태를 볼수있다</p>
+      </div>
 
 
     </>
