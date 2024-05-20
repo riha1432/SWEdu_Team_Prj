@@ -52,7 +52,9 @@ function VegetableGallery(tap) {
         {vegetables.map((veg, index) => (
           <Col key={index} xs={6} md={6} lg={3} className="text-center">
             <Card >
+            <Link to={veg.path}>
               <Card.Img variant="top" src={veg.src} style={imgStyle} alt={veg.name} />
+              </Link>
               <Card.Body >
                 <Card.Title >
                   <Link to={veg.path} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',  textDecoration: 'none', fontFamily: 'Sejong', fontSize: '30px', color: 'Mediumspringgreen' }}>
