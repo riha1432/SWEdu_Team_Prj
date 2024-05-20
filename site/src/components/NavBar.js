@@ -71,7 +71,7 @@ const NavBar = () => {
               </>
             ) : (
               <>
-                <span className="navbar-text me-2">안녕하세요, {username}님</span>
+                <span className="navbar-text me-2">안녕하세요 {username}님</span>
                 <button className="btn btn-link" onClick={handleLogout}>로그아웃</button>
               </>
             )}
