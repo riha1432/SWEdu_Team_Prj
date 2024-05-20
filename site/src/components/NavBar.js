@@ -8,10 +8,11 @@ import RlogoSmall from '../images/RlogoSmall.png'; // 스크롤 시 표시할 �
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [showFixedNavbar, setShowFixedNavbar] = useState(false); // 추가: 고정된 네비게이션 바 표시 여부 상태
   const isLoggedIn = localStorage.getItem('token') !== null;
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
-  const SCROLL_THRESHOLD = 400; // 스크롤 임계값 설정
+  const SCROLL_THRESHOLD = 70;
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -23,6 +24,7 @@ const NavBar = () => {
     const handleScroll = () => {
       const currentScrollTop = document.documentElement.scrollTop;
       setScrolling(currentScrollTop > SCROLL_THRESHOLD);
+      setShowFixedNavbar(currentScrollTop > SCROLL_THRESHOLD); // 스크롤 위치에 따라 고정된 네비게이션 바 표시 여부 설정
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -61,9 +63,11 @@ const NavBar = () => {
 
   return (
     <>
+      {/* 고정되지 않은 상단 네비게이션 바 */}
       <div className={`top-bar ${scrolling ? 'scrolling' : ''}`}>
         <div className="container">
           <div className="d-flex justify-content-end">
+            {/* 로그인 여부에 따라 다른 버튼 렌더링 */}
             {!isLoggedIn ? (
               <>
                 <Link className="btn btn-link" to="/login">로그인</Link>
@@ -78,7 +82,9 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <nav className={`navbar ${scrolling ? 'fixed-top scrolling' : ''} navbar-expand-xl bg-light`} data-bs-theme="light">
+
+      {/* 고정된 상단 네비게이션 바 */}
+      <nav className={`navbar ${showFixedNavbar ? 'fixed-top' : ''} navbar-expand-xl bg-light`} data-bs-theme="light">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img className='navbar-img' src={scrolling ? RlogoSmall : Rlogo} alt="Brand Logo" />
@@ -115,6 +121,7 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
+      {showFixedNavbar && <div style={{height: '150px'}}></div>}
     </>
   );
 };
