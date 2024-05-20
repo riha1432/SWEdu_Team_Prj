@@ -11,7 +11,7 @@ const NavBar = () => {
   const isLoggedIn = localStorage.getItem('token') !== null;
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
-  const SCROLL_THRESHOLD = 200; // 스크롤 임계값 설정
+  const SCROLL_THRESHOLD = 400; // 스크롤 임계값 설정
 
   useEffect(() => {
     if (isLoggedIn) {
