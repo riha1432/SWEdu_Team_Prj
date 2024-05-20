@@ -63,6 +63,7 @@
   transform: scale(0);
   opacity : 0;
   margin-top: 130px;
+  margin-left: 40px;
   font-family: Sejong;
 }
 .end {
@@ -83,4 +84,15 @@
 
 .table{
   margin-top: 35px;
+}
+
+.chart{
+  font-family: "Sejong";
+  margin-top: 130px;
+  width: 850px;
+}
+
+.chart1{
+  font-size: 40px;
+  margin-bottom: 30px;
 }

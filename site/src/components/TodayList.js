@@ -47,7 +47,7 @@ function VegetableGallery(tap) {
   return (
     <Container>
       <div className={'start ' + fade}>
-      <h1 style={{fontFamily: 'Sejong', fontSize: '48px', marginTop: '40px', marginBottom: '30px'}}>지금 제일 잘 나가는 상품</h1>
+      <h1 style={{fontFamily: 'Sejong', fontSize: '48px', marginBottom: '50px'}}>지금 제일 잘 나가는 상품</h1>
       <Row>
         {vegetables.map((veg, index) => (
           <Col key={index} xs={6} md={6} lg={3} className="text-center">

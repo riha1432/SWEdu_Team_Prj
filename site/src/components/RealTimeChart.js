@@ -61,8 +61,8 @@ const RealTimeChart = () => {
   };
 
   return (
-    <div>
-      <h2>Real-Time Chart</h2>
+    <div className='chart'>
+      <h2 className='chart1'>품목별 가격</h2>
       <Line data={chartData} />
     </div>
   );

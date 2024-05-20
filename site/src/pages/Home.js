@@ -71,19 +71,19 @@ function ProductPage({tap,xs,md,lg}){
             <tr>
               <th scope="row">1</th>
               <td onClick={()=>{ navigate('/product/detail/3') }} >겨자채</td>
-              <td>600</td>
+              <td>3800</td>
               <td>5</td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td onClick={()=>{ navigate('/product/detail/2') }}>상추</td>
-              <td>800</td>
+              <td>2200</td>
               <td>6</td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td onClick={()=>{ navigate('/product/detail/3') }}>케일</td>
-              <td>700</td>
+              <td>2200</td>
               <td>8</td>
             </tr>
           </tbody>
