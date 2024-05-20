@@ -24,6 +24,7 @@ function Home() {
 
           <Col xs={12} md={4} lg={6}>
             <ProductPage />
+            <Delivery />
           </Col>
 
           <Col xs={12} md={4} lg={6}>
@@ -32,13 +33,7 @@ function Home() {
 
         </Row>
       </Container>
-      <Container fluid>
-        <Row>
-          <Col xs={12} >  
-            <Delivery />
-          </Col>
-        </Row>
-      </Container>
+      
       
     </div>
     
