@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { searchState } from '../recoilState.js';
-import Rlogo from '../images/Rlogo.png';
+import Rlogo from '../images/Rlogo.png'; // 기본 로고 이미지
+import RlogoSmall from '../images/RlogoSmall.png'; // 스크롤 시 표시할 로고 이미지
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -76,12 +77,12 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <nav className={`navbar ${scrolling ? 'fixed-top' : ''} navbar-expand-lg bg-light`} data-bs-theme="light">
+      <nav className={`navbar ${scrolling ? 'fixed-top scrolling' : ''} navbar-expand-lg bg-light`} data-bs-theme="light">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <img className='navbar-img' src={Rlogo} alt="Brand Logo" />
+            <img className='navbar-img' src={scrolling ? RlogoSmall : Rlogo} alt="Brand Logo" />
           </Link>
-          <form className="d-flex">
+          <form className="d-flex" style={{ marginLeft: '50px' }}>
             <input className="form-control me-sm-6" style={{ width: '300px' }} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown} />
             <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
