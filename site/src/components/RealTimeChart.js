@@ -10,9 +10,9 @@ const RealTimeChart = () => {
     fetchData("Mustard leaves");
   }, []);
 
-  const fetchCropData = async (cropName) => {
+  const fetchCropData = async () => {
     try {
-      const response = await fetch(`http://localhost:10004/cropsprice/${cropName}`);
+      const response = await fetch('http://localhost:10004/cropsprice');
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
@@ -25,16 +25,15 @@ const RealTimeChart = () => {
 
   const fetchData = async (cropName) => {
     try {
-      const data = await fetchCropData(cropName);
+      const data = await fetchCropData();
+      const filteredData = data.filter(item => item.species === cropName);
 
       const chartData = {
-        labels: ["22-1", "22-2", "22-3", "22-4", "22-5", "22-6", "22-7", "22-8", "22-9", "22-10", "22-11", "22-12", 
-                 "23-1", "23-2", "23-3", "23-4", "23-5", "23-6", "23-7", "23-8", "23-9", "23-10", "23-11", "23-12", 
-                 "24-1", "24-2", "24-3", "24-4", "24-5"], // 직접 날짜 텍스트를 넣음
+        labels: filteredData.map(item => item.day),
         datasets: [
           {
             label: `${cropName} 가격 변동`,
-            data: data.map(item => item.price),
+            data: filteredData.map(item => item.Price),
             fill: false,
             backgroundColor: 'rgb(75, 192, 192)',
             borderColor: 'rgba(75, 192, 192, 0.2)',
@@ -58,7 +57,7 @@ const RealTimeChart = () => {
       if (chartInstance) {
         chartInstance.destroy();
       }
-      const ctx = document.getElementById('myChart');
+      const ctx = document.getElementById('myChart').getContext('2d');
       const newChartInstance = new Chart(ctx, {
         type: 'line',
         data: chartData,
