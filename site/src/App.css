@@ -62,6 +62,8 @@
 .start {
   transform: scale(0);
   opacity : 0;
+  margin-top: 130px;
+  font-family: Sejong;
 }
 .end {
   transform: scale(1);
@@ -76,5 +78,9 @@
 .end2{
   transform: scale(1);
   opacity : 1;
-  transition : opacity 6
+  transition : opacity 6s;
+}
+
+.table{
+  margin-top: 35px;
 }
