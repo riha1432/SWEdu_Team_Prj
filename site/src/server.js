@@ -143,17 +143,15 @@ app.get('/cropsprice', (req, res) => {
         console.log('데이터가 없습니다.');
         res.status(404).json({ error: '데이터가 없습니다.' });
       } else {
-        console.log('데이터 조회 성공:', results);
+        // console.log('데이터 조회 성공:', results);
         // 가져온 데이터를 JSON 형식으로 클라이언트에 응답
+        console.log(results.length)
         res.status(200).json(results);
+        // req.write(results)
       }
     }
   });
 });
-
-
-
-
 
 app.listen(10004, () => {
   console.log('서버 실행 중...http://localhost:10004');

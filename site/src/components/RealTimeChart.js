@@ -1,107 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import Chart from 'chart.js/auto'; // Chart.js v3
-import 'chartjs-adapter-moment';
+import React, { useState, useEffect } from 'react';
+import { Line } from 'react-chartjs-2';
+import 'chartjs-adapter-date-fns';
+import { Chart, registerables as ChartRegisterables } from 'chart.js'; // Chart.js에서 Chart를 가져옴
+
+// Chart.js에 필요한 모든 모듈을 등록
+Chart.register(...ChartRegisterables);
 
 const RealTimeChart = () => {
-  const [chartData, setChartData] = useState(null);
-  const [chartInstance, setChartInstance] = useState(null);
-
+  const [data, setData] = useState(null); // 데이터 상태를 관리
   useEffect(() => {
-    fetchData("Mustard leaves");
-  }, []);
-
-  const fetchCropData = async () => {
-    try {
-      const response = await fetch('http://localhost:10004/cropsprice');
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
+    // 서버에서 데이터를 가져오는 함수 정의
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:10004/cropsprice'); // 서버에 GET 요청 보냄
+        const jsonData = await response.json(); // JSON 형태로 응답 데이터 변환
+        setData(jsonData); // 데이터 상태 업데이트
+      } catch (error) {
+        console.error('데이터 가져오기 실패:', error);
       }
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching crop data:', error);
-      return [];
-    }
+    };
+
+    fetchData(); // fetchData 함수 호출하여 데이터 가져오기
+  }, []); // 컴포넌트가 마운트될 때 한 번만 실행
+
+  if (!data || data.length == 0) {
+    return <div>No data available</div>;
+  }
+  const sajlk = new Set(data.map(item => item.Day))
+  console.log(Array.from(sajlk))
+
+  // console.log(data.filter(item => item.pecies == 'Mustard leaves'))
+  const chartData = {
+    labels: Array.from(sajlk),
+    datasets: [
+      {
+        label: 'Mustard Leaves',
+        data: data.filter(item => item.Species === 'Mustard leaves').map(item => item.Price),
+        borderColor: 'rgba(255, 99, 132, 0.6)',
+        fill: false,
+      },
+      {
+        label: 'Lettuce',
+        data: data.filter(item => item.Species ==='Lettuce').map(item => item.Price),
+        borderColor: 'rgba(54, 162, 235, 0.6)',
+        fill: false,
+      },
+      {
+        label: 'Kale',
+        data: data.filter(item => item.Species === 'Kale').map(item => item.Price),
+        borderColor: 'rgba(255, 206, 86, 0.6)',
+        fill: false,
+      },
+      {
+        label: 'Spinach',
+        data: data.filter(item => item.Species === 'Spinach').map(item => item.Price),
+        borderColor: 'rgba(75, 192, 192, 0.6)',
+        fill: false,
+      },
+    ],
   };
-
-  const fetchData = async (cropName) => {
-    try {
-      const data = await fetchCropData();
-      const filteredData = data.filter(item => item.species === cropName);
-
-      const chartData = {
-        labels: filteredData.map(item => item.day),
-        datasets: [
-          {
-            label: `${cropName} 가격 변동`,
-            data: filteredData.map(item => item.Price),
-            fill: false,
-            backgroundColor: 'rgb(75, 192, 192)',
-            borderColor: 'rgba(75, 192, 192, 0.2)',
-            borderWidth: 1,
-          },
-        ],
-      };
-
-      setChartData(chartData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  const handleCropSelection = async (cropName) => {
-    await fetchData(cropName);
-  };
-
-  useEffect(() => {
-    if (chartData) {
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const newChartInstance = new Chart(ctx, {
-        type: 'line',
-        data: chartData,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: '월별 엽채류 가격 변동',
-            },
-          },
-          scales: {
-            x: {
-              title: {
-                display: true,
-                text: '날짜',
-              },
-            },
-            y: {
-              title: {
-                display: true,
-                text: '가격',
-              },
-            },
-          },
-        },
-      });
-      setChartInstance(newChartInstance);
-    }
-  }, [chartData]);
 
   return (
-    <div style={{ marginTop: '30px' }}>
-      <h2>월별 엽채류 가격 변동</h2>
-      <div>
-        <button onClick={() => handleCropSelection("Mustard leaves")}>Mustard leaves</button>
-        <button onClick={() => handleCropSelection("Lettuce")}>Lettuce</button>
-        <button onClick={() => handleCropSelection("Kale")}>Kale</button>
-        <button onClick={() => handleCropSelection("Spinach")}>Spinach</button>
-      </div>
-      <canvas id="myChart" width="400" height="400"></canvas>
+    <div>
+      <h2>Real-Time Chart</h2>
+      <Line data={chartData} />
     </div>
   );
 };

@@ -6,8 +6,8 @@ import { Container, Row, Col, Card, ListGroup, Nav } from 'react-bootstrap';
 import Carousel from '../components/Carousels';
 import TodayList from '../components/TodayList';
 import {Routes, Route, useNavigate, Link, Outlet} from 'react-router-dom';
-import RealTimeChart from '../components/RealTimeChart';
 import deliver from '../images/deliver.jpg';
+import RealTimeChart from '../components/RealTimeChart';
 
 
 function Home() {
