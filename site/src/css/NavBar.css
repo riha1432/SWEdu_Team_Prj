@@ -28,8 +28,8 @@
 }
 
 .navbar-logo {
-  margin-right: 15px;  /* 로고와 메뉴 사이의 간격 최소화 */
-  margin-left: 15px;
+    /* 로고와 메뉴 사이의 간격 최소화 */
+  margin-left: 20px;
   font-family: "Sejong";
   color: #3a3a3a;
   font-size: 28px;
