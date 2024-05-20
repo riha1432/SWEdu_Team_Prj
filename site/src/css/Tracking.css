@@ -4,8 +4,8 @@
   }
   
   @font-face {
-    font-family: Kimjungchul;
-    src: url(../../src/fonts/KimjungchulMyungjo-Regular.ttf);
+    font-family: Sejong;
+    src: url(../../src/fonts/Sejong_hospital_Bold.ttf);
   }
   
   
@@ -17,7 +17,7 @@
     text-align: center;
     font-size: 40px;
     color: rgb(91, 80, 104);
-    font-family: "Kimjungchul";
+    font-family: "Sejong";
   }
   
   .font1{
@@ -28,7 +28,7 @@
     text-align: center;
     font-size: 40px;
     color: black;
-    font-family: "Kimjungchul";
+    font-family: "Sejong";
   }
   
   .jum {

@@ -4,14 +4,10 @@
   }
   
   @font-face {
-    font-family: Monggeul;
-    src: url(../../src/fonts/HakgyoansimMonggeulmonggeulR.ttf);
+    font-family: Sejong;
+    src: url(../../src/fonts/Sejong_hospital_Bold.ttf);
   }
   
-  @font-face {
-    font-family: Kossuyeom;
-    src: url(../../src/fonts/HakgyoansimKossuyeomR.ttf);
-  }
   
   .font{
     margin-top: 70px;
@@ -21,7 +17,7 @@
     text-align: center;
     font-size: 40px;
     color: rgb(91, 80, 104);
-    font-family: "Monggeul";
+    font-family: "Sejong";
   }
   
   .font1{
@@ -32,7 +28,7 @@
     text-align: center;
     font-size: 40px;
     color: black;
-    font-family: "Kossuyeom";
+    font-family: "Sejong";
   }
   
   .jum {
