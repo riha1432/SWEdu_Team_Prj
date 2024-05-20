@@ -11,7 +11,7 @@ const NavBar = () => {
   const isLoggedIn = localStorage.getItem('token') !== null;
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
-  const SCROLL_THRESHOLD = 75; // 스크롤 임계값 설정
+  const SCROLL_THRESHOLD = 200; // 스크롤 임계값 설정
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -71,21 +71,21 @@ const NavBar = () => {
               </>
             ) : (
               <>
-                <span className="navbar-text me-2">안녕하세요 {username}님</span>
+                <span className="navbar-text me-2">안녕하세요, {username}님</span>
                 <button className="btn btn-link" onClick={handleLogout}>로그아웃</button>
               </>
             )}
           </div>
         </div>
       </div>
-      <nav className={`navbar ${scrolling ? 'fixed-top scrolling' : ''} navbar-expand-lg bg-light`} data-bs-theme="light">
+      <nav className={`navbar ${scrolling ? 'fixed-top scrolling' : ''} navbar-expand-xl bg-light`} data-bs-theme="light">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img className='navbar-img' src={scrolling ? RlogoSmall : Rlogo} alt="Brand Logo" />
             <text className='navbar-logo'>Ai농가집성마켓</text>
           </Link>
           <form className="d-flex" style={{ marginLeft: '50px' }}>
-            <input className="form-control me-sm-6" style={{ width: '300px' }} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown} />
+            <input className="form-control me-sm-6" style={{ width: '350px' }} type="search" placeholder="Search" value={text} onChange={onChange} onKeyDown={handleKeyDown} />
             <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,7 +107,7 @@ const NavBar = () => {
                     <Link className="dropdown-item" to="/tracking">배송 조회</Link>
                     <Link className="dropdown-item" to="/">수량 변경</Link>
                     <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="/" onClick={handleLogout}>로그아웃</a>
+                    <a className="dropdown-item logout-link" href="/" onClick={handleLogout}>로그아웃</a>
                   </div>
                 </li>
               )}
