@@ -47,7 +47,7 @@ function VegetableGallery(tap) {
   return (
     <Container>
       <div className={'start ' + fade}>
-      <h1 style={{fontFamily: 'Monggeul', fontSize: '48px', marginTop: '40px', marginBottom: '30px'}}>지금 제일 잘 나가는 상품</h1>
+      <h1 style={{fontFamily: 'Sejong', fontSize: '48px', marginTop: '40px', marginBottom: '30px'}}>지금 제일 잘 나가는 상품</h1>
       <Row>
         {vegetables.map((veg, index) => (
           <Col key={index} xs={6} md={6} lg={3} className="text-center">
@@ -55,7 +55,7 @@ function VegetableGallery(tap) {
               <Card.Img variant="top" src={veg.src} style={imgStyle} alt={veg.name} />
               <Card.Body >
                 <Card.Title >
-                  <Link to={veg.path} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',  textDecoration: 'none', fontFamily: 'Monggeul', fontSize: '30px', color: 'Mediumspringgreen' }}>
+                  <Link to={veg.path} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',  textDecoration: 'none', fontFamily: 'Sejong', fontSize: '30px', color: 'Mediumspringgreen' }}>
                     {veg.name}
                   </Link>
                 </Card.Title>

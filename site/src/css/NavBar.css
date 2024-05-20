@@ -4,7 +4,13 @@
   display: flex;
   justify-content: space-between;  /* 오른쪽 정렬 */
   align-items: center;
+  font-family: "Sejong";
   
+}
+
+@font-face {
+  font-family: Sejong;
+  src: url(../../src/fonts/Sejong_hospital_Bold.ttf);
 }
 
 
