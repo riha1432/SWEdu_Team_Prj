@@ -42,9 +42,6 @@ function product(props) {
               다양한 엽채류들🥗과<br/>
               Ai성장 기반 농산물들🥬이 있어요!
               </h1>
-              <div className='jum'>
-
-              </div>
            
              </div>
 
@@ -63,16 +60,8 @@ function product(props) {
                     </Col>
                 ))}
             </Row>
-            <div className={'start ' + fade2}>
-              <h1 className='font'>Ai농가집성마켓에는<br/>
-              다양한 엽채류들🥗과<br/>
-              Ai성장 기반 농산물들🥬이 있어요!
-              </h1>
-              <div className='jum'>
-
-              </div>
-           
-             </div>
+                
+            <br></br>
 
              <Row xs={2} md={2} lg={6} className="g-4">
                 {products.map((product) => (

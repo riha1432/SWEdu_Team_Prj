@@ -65,6 +65,7 @@ function ProductPage({tap,xs,md,lg}){
               <th scope="col">목록</th>
               <th scope="col">실시간 금액</th>
               <th scope="col">수확 가능 갯수</th>
+              <th scope="col">작물 보러가기</th>
             </tr>
           </thead>
           <tbody>
@@ -73,19 +74,23 @@ function ProductPage({tap,xs,md,lg}){
               <td onClick={()=>{ navigate('/product/detail/3') }} >겨자채</td>
               <td>3800</td>
               <td>5</td>
+              <td>주소</td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td onClick={()=>{ navigate('/product/detail/2') }}>상추</td>
               <td>2200</td>
               <td>6</td>
+              <td>주소</td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td onClick={()=>{ navigate('/product/detail/3') }}>케일</td>
               <td>2200</td>
               <td>8</td>
+              <td>주소</td>
             </tr>
+            
           </tbody>
         </table>
         

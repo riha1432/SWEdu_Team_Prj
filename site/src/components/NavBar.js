@@ -111,7 +111,7 @@ const NavBar = () => {
                   <div className="dropdown-menu">
                     <Link className="dropdown-item" to="/member">회원 정보</Link>
                     <Link className="dropdown-item" to="/tracking">배송 조회</Link>
-                    <Link className="dropdown-item" to="/">수량 변경</Link>
+                    <Link className="dropdown-item" to="/product">수량 변경</Link>
                     <div className="dropdown-divider"></div>
                     <a className="dropdown-item logout-link" href="/" onClick={handleLogout}>로그아웃</a>
                   </div>
