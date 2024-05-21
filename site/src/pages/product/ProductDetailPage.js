@@ -10,7 +10,8 @@ import kaleImage from '../../images/kale.jpg';
 import lettuceImage from '../../images/lettuce.jpg';
 import chardImage from '../../images/chard.jpg';
 import mustardGreensImage from '../../images/mustardGreens.jpg';
-
+import cilantroImage from '../../images/cilantro.jpg';
+import chicoryImage from '../../images/chicory.jpg';
 
 
 function CarouselImages({ src, alt='Image', width = '100%', height = '400px' }) {
@@ -36,7 +37,7 @@ const products = [
     {
         id: 1,
         product_title: '케일',
-        product_price: 25000,
+        product_price: 2640,
         product_seller: '판매자 이름',
         product_address: '경산하양시',
         product_description: '케일 설명들, 케일 설명들, 케일 설명들, 케일 설명들,\n 케일 설명들, 케일 설명들, 케일 설명들, 케일 설명들, 케일 설명들, 케일 설명들,\n 케일 설명들, 케일 설명들, 케일 설명들 \n\n 케일 팝니다 \n\n \n\n \n\n \n\n \n\n\n\nddddd\n\n\n\ndddddddddd\n\n\n\n ddddn \n\n\n\n\n dddddddn\n\n\n\n\n',
@@ -46,7 +47,7 @@ const products = [
     {
         id: 2,
         product_title: '상추',
-        product_price: 3000,
+        product_price: 2690,
         product_seller: '판매자 이름',
         product_address: '경산하양시',
         product_description: '상추 설명들, 상추 설명들, 상추 설명들, 상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,상추 설명들,\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n\n \n \n \n 방금 상추라고 \n \n \n \n',
@@ -56,7 +57,7 @@ const products = [
     {
         id: 3,
         product_title: '근대',
-        product_price: 3000,
+        product_price: 3910,
         product_seller: '판매자 이름',
         product_address: '경산하양시',
         product_description: '근대 설명들, 근대 설명들, 근대 설명들...',
@@ -66,11 +67,31 @@ const products = [
     {
         id: 4,
         product_title: '겨자채',
-        product_price: 3000,
+        product_price: 9000,
         product_seller: '판매자 이름',
         product_address: '경산하양시',
         product_description: '겨자채 설명들, 겨자채 설명들, 겨자채 설명들...',
         product_image_path: mustardGreensImage,
+        created_at: '2024-05-05',
+    },
+    {
+        id: 5,
+        product_title: '고수',
+        product_price: 8310,
+        product_seller: '판매자 이름',
+        product_address: '경산하양시',
+        product_description: '고수 설명',
+        product_image_path: cilantroImage,
+        created_at: '2024-05-05',
+    },
+    {
+        id: 6,
+        product_title: '치커리',
+        product_price: 9900,
+        product_seller: '판매자 이름',
+        product_address: '경산하양시',
+        product_description: '치커리 설명들...',
+        product_image_path: chicoryImage,
         created_at: '2024-05-05',
     },
     // 다른 상품 추가 가능
@@ -117,7 +138,7 @@ function ProductDetailPage() {
         <Container className='product-detail-container'>
             <Row>
                 <Col md={5}>
-                <div ref={carouselRef} style={{ height: carouselHeight }}>
+                <div ref={carouselRef} style={{ height: carouselHeight}}>
                     <Carousel>
                     <Carousel.Item>
                         <CarouselImages src={selectedProduct.product_image_path} text="First slide" />
@@ -135,10 +156,12 @@ function ProductDetailPage() {
                     <Card className='card-shadow-sm'>
                         <CardBody>
                             <Card.Title className='pt-3 pb-3'> <h4>{selectedProduct.product_title}</h4></Card.Title>
-                            <Card.Title className='pt-3 pb-3 border-top'> <h4>{selectedProduct.product_price}원</h4></Card.Title>
+                            <Card.Title className='pt-3 pb-3 border-top'> <h3>{selectedProduct.product_price.toLocaleString()}원</h3></Card.Title>
                             <p className="card-text pt-3 pb-3 border-top">
                                 <span className='badge bg-dark'>카드</span>
+                                <span style={{ marginRight: '10px' }}></span>
                                 <span className='badge bg-dark'>계좌이체</span>
+                                <span style={{ marginRight: '10px' }}></span>
                                 <span className='badge bg-dark'>통장입금</span>
                             </p>
                             <p className="card-text pb-3">
@@ -147,11 +170,11 @@ function ProductDetailPage() {
                             <p className="card-text  pt-3 pb-3 border-top">
                                 <Row>
                                     <Col>
-                                        <label className='col-form-label'><h4>배송 수량</h4></label>
+                                        <label className='col-form-label'><h4>배송 무게(kg)</h4></label>
                                     </Col>
                                     <Col xs="auto" >
                                         <InputGroup>
-                                            <Button className='btn btn-sm btn-outline-secondary' style={{ minWidth: '30px' }} onClick={decrementQuantity}>-</Button>
+                                            <Button className='btn btn-sm btn-outline-secondary' style={{ minWidth: '30px'  }} onClick={decrementQuantity}>-</Button>
                                             <FormControl
                                                 className='text-center border border-secondary rounded'
                                                 value={quantity}
@@ -168,7 +191,7 @@ function ProductDetailPage() {
                                   <h3>총 상품 금액</h3>
                                 </Col>
                                 <Col style={{textAlign:'right'}}>
-                                  <h3>{totalPrice}원</h3>
+                                  <h3>{totalPrice.toLocaleString()}원</h3>
                                 </Col>
                             </Row>
                             <Row>
