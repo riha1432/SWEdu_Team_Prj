@@ -1,10 +1,8 @@
-// Login.js
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../css/Login.css';
 
-function Login({ handleLogin }) { // handleLogin 함수를 props로 전달받음
+function Login({ handleLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -34,13 +32,12 @@ function Login({ handleLogin }) { // handleLogin 함수를 props로 전달받음
       }
 
       const data = await response.json();
-      localStorage.setItem('token', data.token); // 토큰 저장
-
-      handleLogin(); // handleLogin 함수 호출
-
-      navigate('/'); // 메인 페이지로 이동
+      localStorage.setItem('token', data.token);
+      handleLogin();
+      navigate('/');
     } catch (error) {
       console.error('로그인 실패:', error.message);
+      alert('로그인에 실패했습니다.'); // 로그인 실패 시 경고창 띄우기
     }
   };
 
@@ -68,4 +65,3 @@ function Login({ handleLogin }) { // handleLogin 함수를 props로 전달받음
 }
 
 export default Login;
-
