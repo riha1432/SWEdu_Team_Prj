@@ -137,9 +137,9 @@ function ProductDetailPage() {
                             <Card.Title className='pt-3 pb-3'> <h4>{selectedProduct.product_title}</h4></Card.Title>
                             <Card.Title className='pt-3 pb-3 border-top'> <h4>{selectedProduct.product_price}원</h4></Card.Title>
                             <p className="card-text pt-3 pb-3 border-top">
-                                <span className='badge bg-dark'>태그1</span>
-                                <span className='badge bg-dark'>태그2</span>
-                                <span className='badge bg-dark'>태그3</span>
+                                <span className='badge bg-dark'>카드</span>
+                                <span className='badge bg-dark'>계좌이체</span>
+                                <span className='badge bg-dark'>통장입금</span>
                             </p>
                             <p className="card-text pb-3">
                                 배송비 2500원 | 택배배송 | X월 이내 (주말, 공휴일 제외)
@@ -173,10 +173,14 @@ function ProductDetailPage() {
                             </Row>
                             <Row>
                                 <Col className="d-grid gap-2">
-                                    <Button className='btn btn-lg btn-warning btn-block' >장바구니 담기</Button>
+                                    <Button className='btn btn-lg btn-warning btn-block' onClick={()=>{
+                                        alert('장바구니에 담겼습니다')
+                                    }} >장바구니 담기</Button>
                                 </Col>
                                 <Col className="d-grid gap-2">
-                                    <Button className='btn btn-lg btn-success btn-block' >주문하기</Button>
+                                    <Button className='btn btn-lg btn-success btn-block' onClick={()=>{
+                                        alert('주문이 완료되었습니다')
+                                    }} >주문하기</Button>
                                 </Col>
                             </Row>
                         </CardBody>
