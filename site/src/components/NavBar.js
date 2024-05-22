@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { searchState } from '../recoilState.js';
 import Rlogo from '../images/Rlogo.png'; // 기본 로고 이미지
 import RlogoSmall from '../images/RlogoSmall.png'; // 스크롤 시 표시할 로고 이미지
+import { Container, Button } from 'react-bootstrap';
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -57,6 +58,7 @@ const NavBar = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username'); // 'username'으로 변경
     setUsername('');
+    navigate('/');
   };
 
   const [text, setText] = useState('');
@@ -87,22 +89,24 @@ const NavBar = () => {
     <>
       {/* 고정되지 않은 상단 네비게이션 바 */}
       <div className={`top-bar ${scrolling ? 'scrolling' : ''}`}>
-        <div className="container">
+        <Container>
           <div className="d-flex justify-content-end">
             {/* 로그인 여부에 따라 다른 버튼 렌더링 */}
             {!isLoggedIn ? (
               <>
-                <Link className="btn btn-link" to="/login">로그인</Link>
-                <Link className="btn btn-link" to="/signup">회원가입</Link>
+                <Link className="btn btn-link text-muted" style={{ textDecoration: 'none' }} to="/login">로그인</Link>
+                <Link className="mx-0 btn btn-link disabled">|</Link>
+                <Link className="btn btn-link text-muted" style={{ textDecoration: 'none' }} to="/signup">회원가입</Link>
               </>
             ) : (
               <>
                 <span className="navbar-text me-2">안녕하세요, {username || ''}님</span>
-                <button className="btn btn-link" onClick={handleLogout}>로그아웃</button>
+                <Link className="mx-1 btn btn-link disabled">|</Link>
+                <button className="btn btn-link" style={{ textDecoration: 'none', color: 'rgb(238, 95, 95)' }} onClick={handleLogout}>로그아웃</button>
               </>
             )}
           </div>
-        </div>
+        </Container>
       </div>
 
       {/* 고정된 상단 네비게이션 바 */}
