@@ -1,0 +1,185 @@
+/* * {
+    box-shadow: 0 0 0 1px black inset;
+    padding : 5px;
+} */
+
+body{
+    min-width: 800px;
+    margin : 0;
+    padding : 20px
+}
+
+.BorderRadius{
+    border-radius : 15px;
+}
+
+.DisplayFlex{
+    display : flex;
+}
+
+.HeightCenter{
+    position: relative;
+    top: 50%;
+    transform : translate(0, -50%);
+}
+
+.WidthCenter{
+    position: relative;
+    left : 50%;
+    transform : translate(-50%, 0%)
+}
+
+.Center{
+    position: relative;
+    left : 50%;
+    top: 50%;
+    transform : translate(-50%, -50%)
+}
+ul{
+    list-style: none;
+    display: flex;
+    margin : 0px;
+}
+
+li{
+    list-style-type: none;
+    margin: 10px;
+}
+/* ========================================================= */
+
+.header{
+    width : auto;
+    height: 5%;
+    padding: 10px;
+    color : white;
+}
+
+.header>div{
+    width : calc(100% - 10px * 2);
+}
+
+.FarmName{
+    font-size: 40px;
+}
+
+#ManagerName{
+    align-self : flex-end;
+}
+
+.SaveVideo{
+    text-align: right;
+    align-self : flex-end;
+    flex-grow: 1;
+}
+
+.SaveVideo > a:link{
+    color : white;
+    text-decoration : none;
+}
+.SaveVideo > a:hover{
+    color : rgb(3, 3, 3);
+    text-decoration : none;
+}
+.SaveVideo > a:visited{
+    color : white;
+    text-decoration : none;
+}
+
+#logo{
+    width : 50px;
+    height : 50px;
+    border-radius: 15px;
+    transform : translate(0, 10%)
+}
+
+/* ================================== */
+#main{
+    width : auto;
+    height: 5%;
+    padding: 10px;
+    display: flex;
+}
+
+#bodyLeft{
+    width : 50%;
+    height: 500px;
+    flex-grow: 1;
+}
+#bodyRight{
+    width : 50%;
+    height: 500px;
+    flex-grow: 1;
+}
+
+/* =================================== */
+
+#bodyLeft > div {
+    height: 100%;
+    background-color : #ddf3e9;
+    border-radius : 8px;
+}
+
+.textheader{
+    background-color: #155517;
+    height : 40px;
+    border-radius : 8px;
+}
+
+.textheader>p{
+    margin : 0;
+    left : 5%;
+    font-style : blold;
+}
+
+#VideoData{
+    height : calc(100% - 30px * 2);  
+}
+
+#VideoData > img {
+    max-height : 400px; 
+    max-width : 540px; 
+}
+
+.select_object{
+    display: inline-block;
+    height : 100px;
+}
+
+/* =================================== */
+.bodyrightDiv {
+    height: 100%;
+    width : 98%;
+}
+
+.Recommended_Elements > ul{
+    display: flex;
+}
+.Recommended_Elements > ul > li{
+    flex-grow: 1;
+}
+
+.ObjectSelectText > div > select{
+    width : 90%;
+}
+
+#table{
+    margin-top : 5px;
+    width : 95%;
+    position: relative;
+    left : 50%;
+    transform : translate(-50%, 0%)
+}
+
+/* ===================================== */
+
+.ObjectSelectButton{
+    margin : 0 0 0 0;
+    display: flex;
+}
+
+.ObjectSelectButton > input{
+    flex-grow: 1;
+    width : 80px;;
+    margin : 10px;
+}
+/* ============================================ */

@@ -1,0 +1,13 @@
+crops,growth_stage,ti_value,hi_value,ci_value,ir_value
+Mustard_greens,Growing,21.3,53.9,420.75,103.2
+Mustard_greens,Harvest,21.25,61.5,273.9,31.2
+Mustard_greens,Set,21.3,53.55,389.2,87.1
+Lettuce,Growing,22.05,52.6,418.25,83.7
+Lettuce,Harvest,21.75,60.75,267.75,29.35
+Lettuce,Set,21.95,51.9,349,84.95
+Kale,Growing,21.65,52.5,413.05,112.8
+Kale,Harvest,21.47,60.94,283.6,12.72
+Kale,Set,21.55,52.7,354.3,83.05
+Chard,Growing,21.8,54.15,417.55,76
+Chard,Harvest,21.44,61.37,277.19,19.87
+Chard,Set,21.7,53.4,369.45,81.25

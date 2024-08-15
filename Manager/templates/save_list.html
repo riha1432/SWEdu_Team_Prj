@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <title>관리자</title>
+</head>
+<body width = "100%">
+    <div class = 'header BorderRadius navbar-expand-lg bg-dark'>
+        <div class = 'container-fluid DisplayFlex'>
+            <img src = 'img/logo.jpg' id = 'logo' width = '80px' >
+            <span class = 'FarmName'>
+                <농가집성>
+            </span>
+            <span class = 'text-primary-emphasis' id = 'ManagerName'>
+                *** 님
+            </span>
+            <div class = 'SaveVideo'>
+                <a  href = "/">실시간 영상 보기</a>
+            </div>
+        </div>
+    </div>
+    <div id = 'main'>
+        <div id = 'bodyLeft'>
+            <div class = 'card text-white mb-3 WidthCenter'>
+                <div class = 'textheader'>
+                    <p class = 'HeightCenter'>
+                        해당 영상 촬영 날짜
+                    </p>       
+                </div>
+                <div id = 'VideoData' class = 'card-body'>
+                    <img src = '' id = 'img' class = 'Center'>
+                    <!-- <video src = '' id = 'video' class = 'Center'
+                         autoplay controls muted controlsList="nodownload" width = "90%" height="90%">
+                    </video> -->
+                </div>
+            </div>
+        </div>
+    
+        <div id = 'bodyRight'>
+            <div class = 'bodyrightDiv WidthCenter'>
+                <div class = 'ObjectSelectText card border-success mb-3'>
+                    <div>
+                        <select id = "plant_name" class = 'form-select WidthCenter' name = 'plant' onchange = "change_plant(event)">
+                            <option value = "none"><식물 이름></option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id = "growth" class = 'form-select WidthCenter' name = 'plant' onchange = "change_growth(event)">
+                            <option value = "none"><성장 단계></option>
+                            <option value = "none">Set</option>
+                            <option value = "none">Growing</option>
+                            <option value = "none">Harvest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table id = 'table' class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th width = '20%' scope="col">번호</th>
+                            <th scope="col">파일명</th>
+                        </tr>
+                    </thead>
+                    <tbody id = 'Tlist'>
+    
+                    </tbody>
+                </table>
+
+                <div id = 'numpage'>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <button id = 'before' class = 'page-link'> &laquo; </button>
+                        </li>
+                        <li class="page-item">
+                            <button id = 'after'  class = 'page-link'> &raquo; </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src = "{{ url_for('static', filename='js/save_list.js') }}"></script>
+</body>
+</html>
